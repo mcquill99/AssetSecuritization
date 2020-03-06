@@ -1,7 +1,5 @@
 # Asset Securitization Software
 Software Engineering Project
-
-Purpose
 ------
 A mock up project to build a software to interface interactions between Banks, Special Purpose Vehicles (SPVs), and investors. 
 
