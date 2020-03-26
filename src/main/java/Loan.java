@@ -2,7 +2,7 @@ public class Loan {
     private double interest;
     private double balance;
 
-    public Loan(double balance, double interest){
+    public Loan(double balance, double interest) throws IllegalArgumentException{
         if(balance < 0 || interest < 0){
             throw new IllegalArgumentException("Interest and balance must be positive");
         }
@@ -23,7 +23,7 @@ public class Loan {
         return balance;
     }
 
-    public void subtractFromTotal(double amount){
+    public void subtractFromTotal(double amount) throws IllegalArgumentException{
         double rounded = Math.round(amount * 100.0) / 100.0;
         if(amount <= balance && rounded == amount && amount > 0){
             balance = balance - amount;

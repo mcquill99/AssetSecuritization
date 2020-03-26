@@ -1,13 +1,11 @@
 import org.junit.jupiter.api.Test;
 
-import java.util.function.BooleanSupplier;
-
 import static org.junit.jupiter.api.Assertions.*;
 
 public class loanTest {
 
     @Test
-    public void constructorTest(){
+    public void constructorTest() throws IllegalArgumentException{
         assertThrows(IllegalArgumentException.class, () ->new Loan(-10,0), "Interest and balance must be positive");
         assertThrows(IllegalArgumentException.class, () ->new Loan(5,-100), "Interest and balance must be positive");
     }
@@ -53,7 +51,7 @@ public class loanTest {
     }
 
     @Test
-    public void subtractFromTotalTest(){
+    public void subtractFromTotalTest() throws IllegalArgumentException{
         Loan myLoan = new Loan(500, 1);
         myLoan.subtractFromTotal(1);
         assertEquals(499, myLoan.getBalance());
