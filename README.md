@@ -15,3 +15,5 @@ Links
 - Developer Design Document: https://docs.google.com/document/d/1TaHF014bdAxNcHEYIxIZ0OBSzrSaynWzbZKO_gFWBBM/edit?usp=sharing
 
 - Slack Workspace: https://join.slack.com/t/jeps-software/shared_invite/zt-cc3wl434-7N1FdG8GZ4TQGYv7gHMAQA
+
+-Zenhub board: https://app.zenhub.com/workspaces/asset-securitization-5e6000c45a1dad58e9a99430/board?repos=244983543
