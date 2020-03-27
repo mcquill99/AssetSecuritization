@@ -5,7 +5,9 @@ A mock up project to build a software to interface interactions between Banks, S
 
 Borrowers are able to take out loans from the bank, the bank sells the loans to the SPVs who aggregates them into Asset Backed Securities (pools of loans packaged and sold to investors). These SPVs then sell shares of them to investors, who are paid based on when the borrower makes payments on their loans.
 
-Sprint 1 Goal: The bank should be able to create individual loans and distribute them to individual borrowers.
+### Sprint 1 
+Goal: The bank should be able to create individual loans and distribute them to individual borrowers.
+Class Diagram: https://drive.google.com/file/d/1z6Bsrv5iDs6t9FBsi386vvlFLb6whhfC/view
 
 Links
 ------
