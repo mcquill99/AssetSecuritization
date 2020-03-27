@@ -1,3 +1,5 @@
+package ASP;
+
 public class Loan {
     private double interest;
     private double balance;
