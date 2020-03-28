@@ -2,8 +2,11 @@ package ASP;
 
 public class Borrower {
     public double balance;
+    public double loanBalance;
 
     public Borrower(double balance){
+        if (balance < 0) {throw new IllegalArgumentException("Starting balance cannot be negative");}
+
         this.balance = balance;
     }
 

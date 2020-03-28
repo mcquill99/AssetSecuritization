@@ -50,6 +50,7 @@ public class Bank {
         loans.put((loans.size()+1),newLoan);
 
         //add the money to the borrowers balance
+        borrower.loanBalance += amount;
         borrower.balance += amount;
     }
     public static int getRandomIntegerBetweenRange(int min, int max){
