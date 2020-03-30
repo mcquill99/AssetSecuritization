@@ -9,6 +9,10 @@ public class loanTest {
     public void constructorTest(){
         assertThrows(IllegalArgumentException.class, () ->new Loan(-10,0), "Interest and balance must be positive");
         assertThrows(IllegalArgumentException.class, () ->new Loan(5,-100), "Interest and balance must be positive");
+        assertThrows(IllegalArgumentException.class, () ->new Loan(5.00123,-100), "Interest and balance must be positive");
+        assertThrows(IllegalArgumentException.class, () ->new Loan(5.00123,-100.5468786456465456), "Interest and balance must be positive");
+        assertThrows(IllegalArgumentException.class, () ->new Loan(5.0,-100.515133153), "Interest and balance must be positive");
+        assertThrows(IllegalArgumentException.class, () ->new Loan(0,-100.515133153), "Interest and balance must be positive");
     }
 
     @Test
@@ -57,6 +61,11 @@ public class loanTest {
         myLoan.subtractFromTotal(1);
         assertEquals(499, myLoan.getBalance());
 
+        assertThrows(IllegalArgumentException.class, () ->myLoan.subtractFromTotal(1.349), "Amount must be less than or equal to balance and must have at most 2 decimal places");
+        assertThrows(IllegalArgumentException.class, () ->myLoan.subtractFromTotal(459.3499580948309854), "Amount must be less than or equal to balance and must have at most 2 decimal places");
+        assertThrows(IllegalArgumentException.class, () ->myLoan.subtractFromTotal(1.9999999), "Amount must be less than or equal to balance and must have at most 2 decimal places");
+
+
         myLoan.subtractFromTotal(99);
         assertEquals(400, myLoan.getBalance());
 
@@ -67,6 +76,8 @@ public class loanTest {
         assertThrows(IllegalArgumentException.class, () ->myLoan.subtractFromTotal(100), "Amount must be less than or equal to balance and must have at most 2 decimal places");
         assertThrows(IllegalArgumentException.class, () ->myLoan.subtractFromTotal(-1), "Amount must be less than or equal to balance and must have at most 2 decimal places");
         assertThrows(IllegalArgumentException.class, () ->myLoan.subtractFromTotal(-10000), "Amount must be less than or equal to balance and must have at most 2 decimal places");
+
+        //Add tests for multiple decimals
 
     }
 
