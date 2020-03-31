@@ -40,7 +40,7 @@ public class bankTest {
 
         //release loanID 2 then make sure its null
         testBank.releaseAsset(2);
-        assertEquals(null,testBank.loans.get(2));
+        assertNull(testBank.loans.get(2));
 
         //try to release an asset that does not exist(invalid loanID)
         assertThrows(IllegalArgumentException.class, () -> testBank.releaseAsset(60));
@@ -58,7 +58,7 @@ public class bankTest {
 
         chase.sellLoan(200, joel);
         //makes sure joel has $260 after taking out the loan
-        assertEquals(260, chase.customers.get(1).balance);
+        assertEquals(260, chase.customers.get(1).checkBalance());
 
         //makes sure the loan is in the system
         assertTrue(chase.loans.containsKey(1));
