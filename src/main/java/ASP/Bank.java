@@ -8,6 +8,8 @@ import java.util.Random;
 public class Bank {
     public HashMap<Integer,Borrower> customers = new HashMap<>();
     public HashMap<Integer,Loan> loans = new HashMap<>();
+    public HashMap<Loan,Borrower> borrowerLoanPairs = new HashMap<>();
+
     double balance;
 
     public Bank(double balance){
@@ -48,6 +50,9 @@ public class Bank {
         //create a loan and add it to the collection
         Loan newLoan = new Loan(amount,interest);
         loans.put((loans.size()+1),newLoan);
+
+        //add the customer loan pair to our map
+        borrowerLoanPairs.put(newLoan, borrower);
 
 
         borrower.receiveLoan(newLoan);
