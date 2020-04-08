@@ -20,6 +20,7 @@ Class Diagram: https://drive.google.com/file/d/1NeR8zkYV1fFxN-1elfnRv5uLTxr-Xswl
 GUI State Diagram: https://drive.google.com/file/d/1-8liszg1oJcFfCxlC0mrVDSQ9n0lv5nL/view?usp=sharing
 
 Use Case Diagram: https://app.diagrams.net/#G1dsFjHImwYMCaLw6bZHKE7KBEABDghRSK
+
 Links
 ------
 
