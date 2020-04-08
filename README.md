@@ -13,7 +13,8 @@ Retrospective: https://docs.google.com/document/d/1W9H1CcFut3TdKr-3yVpAgyQaOnzmt
 
 ### Sprint 2
 Class Diagram: https://drive.google.com/file/d/1NeR8zkYV1fFxN-1elfnRv5uLTxr-Xswl/view?usp=sharing
-
+GUI State Diagram: https://drive.google.com/file/d/1-8liszg1oJcFfCxlC0mrVDSQ9n0lv5nL/view?usp=sharing
+Use Case Diagram: https://app.diagrams.net/#G1dsFjHImwYMCaLw6bZHKE7KBEABDghRSK
 Links
 ------
 
@@ -22,5 +23,3 @@ Links
 - Slack Workspace: https://join.slack.com/t/jeps-software/shared_invite/zt-cc3wl434-7N1FdG8GZ4TQGYv7gHMAQA
 
 - Zenhub board: https://app.zenhub.com/workspaces/asset-securitization-5e6000c45a1dad58e9a99430/board?repos=244983543
-
-- GUI State Diagram: https://drive.google.com/file/d/1-8liszg1oJcFfCxlC0mrVDSQ9n0lv5nL/view?usp=sharing
