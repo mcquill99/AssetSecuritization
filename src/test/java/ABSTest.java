@@ -41,8 +41,6 @@ public class ABSTest {
             assertEquals(getAverageInterest(loans), abs.getRiskValue());
         }
 
-
-
     }
 
     @Test
