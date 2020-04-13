@@ -1,6 +1,7 @@
 import ASP.AssetBackedSecurity;
 import ASP.Loan;
 import ASP.SPV;
+import ASP.insufficientLoansException;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
@@ -31,26 +32,24 @@ public class SPVTest {
     }
 
     @Test
-    public void createABSTest(){
+    public void createABSTest() throws insufficientLoansException {
         SPV spv;
         List<Loan> loans = generateLoanList(5,5,10);
         spv = new SPV(loans);
 
         //test for interest values outside of loan scope
-        assertThrows(IllegalArgumentException.class, () ->spv.createABS(90,100,100));
-        assertThrows(IllegalArgumentException.class, () ->spv.createABS(15,20,100));
-        assertThrows(IllegalArgumentException.class, () ->spv.createABS(25,50,100));
+        assertThrows(insufficientLoansException.class, () ->spv.createABS(90,100,100));
+        assertThrows(insufficientLoansException.class, () ->spv.createABS(15,20,100));
+        assertThrows(insufficientLoansException.class, () ->spv.createABS(25,50,100));
 
         //valid ABS creation test
-        spv.createABS(5,10,1);
         assertTrue(checkABS(5,10,spv.createABS(5,10,1)));
 
-        spv.createABS(5, 10, 4);
-        assertTrue(checkABS(5,10,spv.createABS(5,10,1)));
+        assertTrue(checkABS(5,10,spv.createABS(5,10,4)));
 
         //test for no loans that arent already assigned to an abs
-        assertThrows(IllegalArgumentException.class, () ->spv.createABS(5,10,1));
-        assertThrows(IllegalArgumentException.class, () ->spv.createABS(5,10,100));
+        assertThrows(insufficientLoansException.class, () ->spv.createABS(5,10,1));
+        assertThrows(insufficientLoansException.class, () ->spv.createABS(5,10,100));
 
 
         //test for maxInterest lower than minInterest
