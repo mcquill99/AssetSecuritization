@@ -61,6 +61,10 @@ public class SPVTest {
         assertThrows(IllegalArgumentException.class, () ->spv.createABS(5,-10,1));
         assertThrows(IllegalArgumentException.class, () ->spv.createABS(-5,-10,1));
 
+        //test for negative numLoans request
+        assertThrows(IllegalArgumentException.class, () ->spv.createABS(5,10,0));
+        assertThrows(IllegalArgumentException.class, () ->spv.createABS(5,10,-5));
+        assertThrows(IllegalArgumentException.class, () ->spv.createABS(5,10,-100));
 
     }
 }
