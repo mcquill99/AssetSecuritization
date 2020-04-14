@@ -13,5 +13,8 @@ public class spvTest {
         testBank.createLoan(3000,20); // id: 2
 
         testSpv.buyLoan(10,testBank,testSpv);
+        testSpv.buyLoan(20,testBank,testSpv);
+        testSpv.buyLoan(50,testBank,testSpv);
+
     }
 }

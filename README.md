@@ -7,8 +7,21 @@ Borrowers are able to take out loans from the bank, the bank sells the loans to 
 
 ### Sprint 1 
 Goal: The bank should be able to create individual loans and distribute them to individual borrowers.  
+
 Class Diagram: https://drive.google.com/file/d/1z6Bsrv5iDs6t9FBsi386vvlFLb6whhfC/view  
+
 Retrospective: https://docs.google.com/document/d/1W9H1CcFut3TdKr-3yVpAgyQaOnzmt4V0kOKVtlNWYgE/edit?usp=sharing
+
+
+### Sprint 2
+
+Goal: The bank should be able to sell loans to the SPV, who can aggregate loans by interest rate, and assign a risk value accordingly.
+
+Class Diagram: https://drive.google.com/file/d/1NeR8zkYV1fFxN-1elfnRv5uLTxr-Xswl/view?usp=sharing
+
+GUI State Diagram: https://drive.google.com/file/d/1-8liszg1oJcFfCxlC0mrVDSQ9n0lv5nL/view?usp=sharing
+
+Use Case Diagram: https://app.diagrams.net/#G1dsFjHImwYMCaLw6bZHKE7KBEABDghRSK
 
 Links
 ------
