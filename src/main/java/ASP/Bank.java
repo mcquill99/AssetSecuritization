@@ -2,13 +2,16 @@ package ASP;
 
 import java.util.HashMap;
 import java.lang.Math;
+import java.util.Map;
 import java.util.Random;
+import java.util.Iterator;
 
 
 public class Bank {
     public HashMap<Integer,Borrower> customers = new HashMap<>();
     public HashMap<Integer,Loan> loans = new HashMap<>();
     public HashMap<Loan,Borrower> borrowerLoanPairs = new HashMap<>();
+    public HashMap<Integer,SPV> SPVLoanPairs = new HashMap<>();
 
     double balance;
 
@@ -56,6 +59,21 @@ public class Bank {
 
 
         borrower.receiveLoan(newLoan);
+    }
+    void sellLoanToSPV(double expectedInterest, SPV spv) {
+        Iterator<HashMap.Entry<Integer, Loan>> itr = loans.entrySet().iterator();
+        int loanID = 0;
+        Loan boughtLoan;
+        while (itr.hasNext()) {
+            HashMap.Entry<Integer, Loan> loanToLookFor = itr.next();
+            if (loanToLookFor.getValue().getInterest() == expectedInterest) {
+                loanID = loanToLookFor.getKey();
+            }
+        }
+        boughtLoan = loans.get(loanID);
+        SPVLoanPairs.put(loanID,spv);
+        spv.loan.put(loanID,boughtLoan);
+        loans.remove(loanID);
     }
     public static int generateInterestRate(int min, int max){
         return (int)(Math.random()*((max-min)+1))+min;
