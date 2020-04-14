@@ -1,14 +1,17 @@
-import ASP.AssetBackedSecurity;
-import ASP.Loan;
-import ASP.SPV;
-import ASP.insufficientLoansException;
+import ASP.*;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
+import ASP.AssetBackedSecurity;
+import ASP.Loan;
+import ASP.SPV;
+import ASP.insufficientLoansException;
 
 public class SPVTest {
 
@@ -67,4 +70,20 @@ public class SPVTest {
         assertThrows(IllegalArgumentException.class, () ->spv.createABS(5,10,-100));
 
     }
+
+    @Test
+    public void buyLoanTest(){
+        SPV testSpv = new SPV();
+        Bank testBank = new Bank(30000);
+        testBank.createLoan(2500,10); // id: 1
+        testBank.createLoan(3000,20); // id: 2
+
+        testSpv.buyLoan(10,testBank,testSpv);
+        testSpv.buyLoan(20,testBank,testSpv);
+        testSpv.buyLoan(50,testBank,testSpv);
+
+    }
 }
+
+
+
