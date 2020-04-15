@@ -13,7 +13,7 @@ import ASP.Loan;
 import ASP.SPV;
 import ASP.insufficientLoansException;
 
-public class SPVTest {
+public class spvTest {
 
     public List<Loan> generateLoanList(int numOfLoans, int minInterest, int maxInterest){
         List<Loan> toReturn = new ArrayList<>();
