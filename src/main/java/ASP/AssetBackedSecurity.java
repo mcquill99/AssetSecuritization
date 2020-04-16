@@ -8,6 +8,10 @@ public class AssetBackedSecurity {
     private List<Loan> loans;
     private double riskValue;
 
+    public AssetBackedSecurity(){
+        loans = new ArrayList<>();
+    }
+
     public AssetBackedSecurity(List<Loan> loansList){
         loans = loansList;
     }
@@ -27,6 +31,19 @@ public class AssetBackedSecurity {
     }
     public List<Loan> getLoanList(){
         return loans;
+
+    }
+    public int numberOfLoans(){
+        return loans.size();
+    }
+    // for json processing
+
+    public List<Loan> getLoans(){
+        return loans;
+    }
+
+    public void setLoans(List<Loan> loans){
+        this.loans = loans;
     }
 
 }

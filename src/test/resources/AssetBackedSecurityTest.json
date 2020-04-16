@@ -1,0 +1,24 @@
+{
+  "loans": [
+    {
+      "balance" : 500.0,
+      "interest" : 5
+    },
+    {
+      "balance" : 1000.0,
+      "interest" : 5
+    },
+    {
+      "balance" : 500.0,
+      "interest" : 10
+    },
+    {
+      "balance" : 750.0,
+      "interest" : 10
+    },
+    {
+      "balance" : 500.0,
+      "interest" : 5
+    }
+  ]
+}

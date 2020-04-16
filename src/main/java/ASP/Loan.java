@@ -40,4 +40,17 @@ public class Loan {
         double rounded = Math.round(amount * 100.0) / 100.0;
         return amount == rounded && amount > 0;
     }
+
+    //for json library
+    public Loan(){
+
+    }
+
+    public void setInterest(double interest){
+        this.interest = interest;
+    }
+
+    public void setBalance(double balance){
+        this.balance = balance;
+    }
 }
