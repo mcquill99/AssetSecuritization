@@ -7,7 +7,7 @@ import java.util.List;
 
 public class SPV {
     private List<Loan> loans;
-    public List<AssetBackedSecurity> ABSList;
+    public List<AssetBackedSecurity> ABSList = new ArrayList<>();
     public HashMap<Integer, Loan> loan = new HashMap<>();
     private HashMap<Loan, Boolean> isInABS = new HashMap<>();
     private double balance;
@@ -50,7 +50,10 @@ public class SPV {
             throw new insufficientLoansException("The number of loans you requested is not available, currently " + absLoans.size() + " loans are available in that range");
         }
 
-        return new AssetBackedSecurity(absLoans);
+        AssetBackedSecurity absToAdd = new AssetBackedSecurity(absLoans);
+        ABSList.add(absToAdd);
+
+        return absToAdd;
     }
 
     public List<AssetBackedSecurity> getABSList() {
@@ -60,12 +63,12 @@ public class SPV {
     public List<Double> AssignRiskValue() {
         List<Double> ABSrisk = new ArrayList<>();
 
-        double currentABSrisk = 0;
+        double currentABSrisk;
 
         for(AssetBackedSecurity abs:ABSList){
             currentABSrisk = abs.getRiskValue();
+            ABSrisk.add(currentABSrisk);
         }
-        ABSrisk.add(currentABSrisk);
         return ABSrisk;
     }
 }

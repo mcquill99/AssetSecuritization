@@ -96,16 +96,18 @@ public class SPVTest {
     @Test
     public void assignRiskValueTest() throws insufficientLoansException {
         SPV spv;
-        List<Loan> loans = generateLoanList(10,3,18);
+        List<Loan> loans = generateLoanList(1000,5,15);
         spv = new SPV(loans);
 
         spv.createABS(5,10,3);
         spv.createABS(7,15,2);
 
 
-        spv.AssignRiskValue();
+        List<Double> list1 = spv.AssignRiskValue();
 
-        assertEquals(spv.AssignRiskValue().get(0), spv.ABSList.get(0).getRiskValue());
+
+        Double d;
+        assertEquals(list1.get(0), d = spv.getABSList().get(0).getRiskValue());
 
     }
 
