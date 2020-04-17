@@ -27,6 +27,7 @@ public class AssetBackedSecurity {
 
 
     public double getRiskValue(){
+        generateRiskValue();
         return riskValue;
     }
     public List<Loan> getLoanList(){
