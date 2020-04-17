@@ -7,10 +7,11 @@ import java.util.List;
 
 public class SPV {
     private List<Loan> loans;
-    private List<AssetBackedSecurity> ABSList;
+    public List<AssetBackedSecurity> ABSList;
     public HashMap<Integer, Loan> loan = new HashMap<>();
     private HashMap<Loan, Boolean> isInABS = new HashMap<>();
     private double balance;
+    public double SPVriskAverage;
 
 
     public SPV() {
@@ -56,7 +57,16 @@ public class SPV {
         return ABSList;
     }
 
-    public void AssignRiskValue() {
+    public List<Double> AssignRiskValue() {
+        List<Double> ABSrisk = new ArrayList<>();
+
+        double currentABSrisk = 0;
+
+        for(AssetBackedSecurity abs:ABSList){
+            currentABSrisk = abs.getRiskValue();
+        }
+        ABSrisk.add(currentABSrisk);
+        return ABSrisk;
     }
 }
 

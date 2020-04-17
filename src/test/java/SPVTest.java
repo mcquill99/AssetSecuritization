@@ -5,13 +5,12 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-import static org.junit.jupiter.api.Assertions.assertThrows;
-import static org.junit.jupiter.api.Assertions.assertTrue;
-
 import ASP.AssetBackedSecurity;
 import ASP.Loan;
 import ASP.SPV;
 import ASP.insufficientLoansException;
+
+import static org.junit.jupiter.api.Assertions.*;
 
 public class SPVTest {
 
@@ -81,6 +80,32 @@ public class SPVTest {
         assertThrows(IllegalArgumentException.class, () ->spv.createABS(5,10,0));
         assertThrows(IllegalArgumentException.class, () ->spv.createABS(5,10,-5));
         assertThrows(IllegalArgumentException.class, () ->spv.createABS(5,10,-100));
+
+    }
+
+    public double getAverageRisk(List<AssetBackedSecurity> absList){
+        double toReturn = 0;
+        for (AssetBackedSecurity abs :absList) {
+            abs.generateRiskValue();
+            toReturn += abs.getRiskValue();
+        }
+
+        return toReturn / absList.size();
+    }
+
+    @Test
+    public void assignRiskValueTest() throws insufficientLoansException {
+        SPV spv;
+        List<Loan> loans = generateLoanList(10,3,18);
+        spv = new SPV(loans);
+
+        spv.createABS(5,10,3);
+        spv.createABS(7,15,2);
+
+
+        spv.AssignRiskValue();
+
+        assertEquals(spv.AssignRiskValue().get(0), spv.ABSList.get(0).getRiskValue());
 
     }
 
