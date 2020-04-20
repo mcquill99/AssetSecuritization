@@ -1,8 +1,11 @@
 import ASP.AssetBackedSecurity;
 import ASP.Loan;
+import util.JsonUtil;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
+
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -29,7 +32,7 @@ public class ABSTest {
     }
 
     @Test
-    public void generateRiskValueTest(){
+    public void generateRiskValueTest() throws IOException {
 
         AssetBackedSecurity abs;
         List<Loan> loans;
@@ -39,12 +42,18 @@ public class ABSTest {
             abs.generateRiskValue();
 
             assertEquals(getAverageInterest(loans), abs.getRiskValue());
+
         }
+
+        abs = JsonUtil.fromJsonFile("src/test/resources/AssetBackedSecurityTest.json", AssetBackedSecurity.class);
+
+        abs.generateRiskValue();
+        assertEquals(7, abs.getRiskValue());
 
     }
 
     @Test
-    public void getRiskValueTest(){
+    public void getRiskValueTest() throws IOException {
         AssetBackedSecurity abs;
         List<Loan> loans;
         for(int i = 0; i < 100; i++){
@@ -54,5 +63,17 @@ public class ABSTest {
 
             assertEquals(getAverageInterest(loans), abs.getRiskValue());
         }
+        abs = JsonUtil.fromJsonFile("src/test/resources/AssetBackedSecurityTest.json", AssetBackedSecurity.class);
+        abs.generateRiskValue();
+        assertEquals(7, abs.getRiskValue());
+
+
+    }
+
+    @Test
+    public void numberOfLoansTest() throws IOException {
+
+        AssetBackedSecurity abs = JsonUtil.fromJsonFile("src/test/resources/AssetBackedSecurityTest.json", AssetBackedSecurity.class);
+        assertEquals(5, abs.numberOfLoans());
     }
 }

@@ -7,10 +7,11 @@ import java.util.List;
 
 public class SPV {
     private List<Loan> loans;
-    private List<AssetBackedSecurity> ABSList;
+    public List<AssetBackedSecurity> ABSList = new ArrayList<>();
     public HashMap<Integer, Loan> loan = new HashMap<>();
     private HashMap<Loan, Boolean> isInABS = new HashMap<>();
     private double balance;
+    public double SPVriskAverage;
 
 
     public SPV() {
@@ -30,7 +31,7 @@ public class SPV {
     }
 
     public void addABStoList(double minInterest, double maxInterest, int numLoans){
-
+        //todo DO THIS
     }
 
     public AssetBackedSecurity createABS(double minInterest, double maxInterest, int numLoans) throws insufficientLoansException, IllegalArgumentException {
@@ -49,14 +50,26 @@ public class SPV {
             throw new insufficientLoansException("The number of loans you requested is not available, currently " + absLoans.size() + " loans are available in that range");
         }
 
-        return new AssetBackedSecurity(absLoans);
+        AssetBackedSecurity absToAdd = new AssetBackedSecurity(absLoans);
+        ABSList.add(absToAdd);
+
+        return absToAdd;
     }
 
     public List<AssetBackedSecurity> getABSList() {
         return ABSList;
     }
 
-    public void AssignRiskValue() {
+    public List<Double> AssignRiskValue() {
+        List<Double> ABSrisk = new ArrayList<>();
+
+        double currentABSrisk;
+
+        for(AssetBackedSecurity abs:ABSList){
+            currentABSrisk = abs.getRiskValue();
+            ABSrisk.add(currentABSrisk);
+        }
+        return ABSrisk;
     }
 }
 
