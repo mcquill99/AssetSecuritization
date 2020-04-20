@@ -30,9 +30,6 @@ public class SPV {
         bank.sellLoanToSPV(interestRate, spv);
     }
 
-    public void addABStoList(double minInterest, double maxInterest, int numLoans){
-        //todo DO THIS
-    }
 
     public AssetBackedSecurity createABS(double minInterest, double maxInterest, int numLoans) throws insufficientLoansException, IllegalArgumentException {
         if (minInterest > maxInterest || minInterest < 0 || maxInterest < 0 || numLoans <= 0) {
