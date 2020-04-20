@@ -1,6 +1,5 @@
 package ASP;
 
-import java.util.HashMap;
 import java.util.List;
 
 public class Investor {
@@ -12,4 +11,7 @@ public class Investor {
         this.ABSinvestedIn = ABSinvestedIn;
     }
 
+    public double getBalance() {
+        return balance;
+    }
 }
