@@ -14,4 +14,8 @@ public class Investor {
     public double getBalance() {
         return balance;
     }
+
+    public List<AssetBackedSecurity> getABSinvestedIn() {
+        return ABSinvestedIn;
+    }
 }
