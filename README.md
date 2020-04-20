@@ -17,7 +17,7 @@ Retrospective: https://docs.google.com/document/d/1W9H1CcFut3TdKr-3yVpAgyQaOnzmt
 
 Goal: The bank should be able to sell loans to the SPV, who can aggregate loans by interest rate, and assign a risk value accordingly.
 
-Class Diagram: https://drive.google.com/file/d/1NeR8zkYV1fFxN-1elfnRv5uLTxr-Xswl/view?usp=sharing
+Class Diagram: https://drive.google.com/file/d/1NeR8zkYV1fFxN-1elfnRv5uLTxr-Xswl/view
 
 GUI State Diagram: https://drive.google.com/file/d/1-8liszg1oJcFfCxlC0mrVDSQ9n0lv5nL/view?usp=sharing
 
