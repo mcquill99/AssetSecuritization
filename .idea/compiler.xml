@@ -8,6 +8,7 @@
         <outputRelativeToContentRoot value="true" />
         <module name="maventest" />
         <module name="AssetSecuritization" />
+        <module name="NEWAssetSecuritization" />
       </profile>
     </annotationProcessing>
   </component>
