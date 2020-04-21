@@ -25,11 +25,43 @@ public class ABSTest {
     public double getAverageInterest(List<Loan> loans){
         double toReturn = 0;
         for (Loan loan : loans) {
-            toReturn += loan.getInterest();
+            double interest = loan.getInterest();
+            toReturn = toReturn + interest;
         }
 
-        return toReturn / loans.size();
+        return Math.round((toReturn / loans.size()) * 100000.0) / 100000.0;
     }
+
+    @Test
+    public void generateLoanListTest(){
+        List<Loan> loans = generateLoanList(1, 5,5);
+        assertEquals(.05, loans.get(0).getInterest());
+        assertEquals(500, loans.get(0).getBalance());
+
+        loans = generateLoanList(10, 10,10);
+        for(int i = 0; i < 10; i++){
+            assertEquals(0.1, loans.get(i).getInterest());
+            assertEquals(500, loans.get(0).getBalance());
+        }
+    }
+
+    @Test
+    public void getAverageInterestTest(){
+        List<Loan> loans = new ArrayList<>();
+        loans.add(new Loan(500, 5));
+        assertEquals(.05, getAverageInterest(loans));
+
+        loans.add(new Loan(500, 10));
+        assertEquals(.075, getAverageInterest(loans));
+
+        loans.add(new Loan(500, 7.5));
+        assertEquals(.075, getAverageInterest(loans));
+
+        loans.add(new Loan(500, 5));
+        assertEquals(.06875, getAverageInterest(loans));
+
+    }
+
 
     @Test
     public void generateRiskValueTest() throws IOException {
@@ -37,7 +69,7 @@ public class ABSTest {
         AssetBackedSecurity abs;
         List<Loan> loans;
         for(int i = 0; i < 100; i++){
-            loans = generateLoanList(i * 10, 5, 10);
+            loans = generateLoanList(i * 10, 10, 10);
             abs = new AssetBackedSecurity(loans);
             abs.generateRiskValue();
 
