@@ -34,10 +34,8 @@ public class mainTEST {
         System.out.println(" ");
         System.out.println(" ");
 
-        //PROBLEM:takes in whole numbers as interest rates instead of decimal format
-
-        //spv.createABS(5.0,6.0,2);
-        //spv.getABSList();
+        spv.createABS(5.0,6.0,2);
+        System.out.println(spv.getABSList());
 
 
     }

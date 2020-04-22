@@ -9,7 +9,7 @@ public class SPV {
     private List<Loan> loans;
     public List<AssetBackedSecurity> ABSList = new ArrayList<>();
     public HashMap<Integer, Loan> loan = new HashMap<>();
-    private HashMap<Loan, Boolean> isInABS = new HashMap<>();
+    public HashMap<Loan, Boolean> isInABS = new HashMap<>();
     private double balance;
     public double SPVriskAverage;
 
