@@ -19,6 +19,10 @@ public class SPV {
         ABSList = new ArrayList<>();
     }
 
+    public List<Loan> getLoans(){
+        return loans;
+    }
+
     public SPV(List<Loan> listOfLoans) {
         loans = listOfLoans;
         for (Loan loan : loans) {

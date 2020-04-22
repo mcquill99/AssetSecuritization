@@ -73,7 +73,8 @@ public class Bank {
         }
         boughtLoan = loans.get(loanID);
         SPVLoanPairs.put(loanID,spv);
-        spv.loan.put(loanID,boughtLoan);
+        spv.getLoans().add(boughtLoan);
+        //spv.loan.put(loanID,boughtLoan);
         loans.remove(loanID);
     }
     public static int generateInterestRate(int min, int max){
