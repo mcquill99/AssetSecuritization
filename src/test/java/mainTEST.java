@@ -4,12 +4,27 @@ public class mainTEST {
 
     public static void main(String[] args) throws insufficientLoansException {
         Borrower Sean = new Borrower(6000);
+        Borrower Joel = new Borrower(6000);
+
         Bank ChaseBank = new Bank(10000000);
         SPV spv = new SPV();
         ChaseBank.createLoan(1000,5.0);
         ChaseBank.createLoan(2500,6.0);
-        AssetBackedSecurity asp = new AssetBackedSecurity();
 
+        System.out.println("Printing Borrower's balance before loan purchase:\n");
+        System.out.println("Sean:" + Sean.checkBalance());
+        System.out.println("Joel:" + Joel.checkBalance());
+        System.out.println(" ");
+
+        Sean.buyLoan(1000,ChaseBank);
+        Joel.buyLoan(2500,ChaseBank);
+
+        System.out.println("Printing Borrower's balance after loan purchase:\n");
+        System.out.println("Sean:" + Sean.checkBalance());
+        System.out.println("Joel:" + Joel.checkBalance());
+
+        System.out.println(" ");
+        System.out.println(" ");
         System.out.println("Should contain 2 loans:\n");
 
         System.out.println(ChaseBank.loans);
