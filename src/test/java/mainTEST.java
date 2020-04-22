@@ -12,10 +12,17 @@ public class mainTEST {
         ChaseBank.createLoan(1000,5.0);
         ChaseBank.createLoan(2500,6.0);
 
-        spv.buyLoan(5.0,ChaseBank,spv);
+        System.out.println("Should contain 2 loans");
 
         System.out.println(ChaseBank.loans);
         System.out.println(" ");
+
+        spv.buyLoan(5.0,ChaseBank,spv);
+
+        System.out.println("Should contain 1 loan");
+        System.out.println(ChaseBank.loans);
+        System.out.println(" ");
+        System.out.println("Should contain 1 loan");
         System.out.println(spv.loan);
     }
 

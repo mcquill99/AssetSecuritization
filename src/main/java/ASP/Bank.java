@@ -61,9 +61,8 @@ public class Bank {
         borrower.receiveLoan(newLoan);
     }
     void sellLoanToSPV(double expectedInterest, SPV spv) {
-        HashMap<Integer, HashMap<Integer, Loan>> hm;
-
-        /*Iterator<HashMap.Entry<Integer, Loan>> itr = loans.entrySet().iterator();
+        expectedInterest = expectedInterest/100;
+        Iterator<HashMap.Entry<Integer, Loan>> itr = loans.entrySet().iterator();
         int loanID = 0;
         Loan boughtLoan;
         while (itr.hasNext()) {
@@ -75,7 +74,7 @@ public class Bank {
         boughtLoan = loans.get(loanID);
         SPVLoanPairs.put(loanID,spv);
         spv.loan.put(loanID,boughtLoan);
-        loans.remove(loanID);*/
+        loans.remove(loanID);
     }
     public static int generateInterestRate(int min, int max){
         return (int)(Math.random()*((max-min)+1))+min;
