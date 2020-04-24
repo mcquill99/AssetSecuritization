@@ -21,7 +21,9 @@ Class Diagram: https://drive.google.com/file/d/1NeR8zkYV1fFxN-1elfnRv5uLTxr-Xswl
 
 GUI State Diagram: https://drive.google.com/file/d/1-8liszg1oJcFfCxlC0mrVDSQ9n0lv5nL/view?usp=sharing
 
-Use Case Diagram: https://app.diagrams.net/#G1dsFjHImwYMCaLw6bZHKE7KBEABDghRSK
+Use Case Diagram: https://app.diagrams.net/#G1dsFjHImwYMCaLw6bZHKE7KBEABDghRSK  
+
+Retrospective: https://docs.google.com/document/d/1-BS5YgGdF8z8QSnWQ9zfx5iwX0s0c9YucO0qezdpPSo/edit?usp=sharing
 
 Links
 ------
