@@ -29,6 +29,8 @@ Retrospective: https://docs.google.com/document/d/1-BS5YgGdF8z8QSnWQ9zfx5iwX0s0c
 
 Goal: Finish investor class and have a user interface where the investor can buy stock in ABSs and check on their existing ABSs, aswell as check their balance.
 
+User Testing to Test for Completion: https://docs.google.com/document/d/12lBUoRwMTkJVlYdgZoZrjTXnMMDnMOM0jDB3RgEPd_I/edit?usp=sharing
+
 Links
 ------
 
