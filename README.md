@@ -27,7 +27,7 @@ Retrospective: https://docs.google.com/document/d/1-BS5YgGdF8z8QSnWQ9zfx5iwX0s0c
 
 ### Sprint 3
 
-Goal: Finish investor class and have a user interface where the investor can buy stock in ABSs and check on their existing ABSs, aswell as check their balance
+Goal: Finish investor class and have a user interface where the investor can buy stock in ABSs and check on their existing ABSs, aswell as check their balance.
 
 Links
 ------
