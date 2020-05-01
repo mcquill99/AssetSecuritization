@@ -1,6 +1,5 @@
 import ASP.Bank;
 import ASP.Borrower;
-import ASP.Loan;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -26,9 +25,9 @@ public class bankTest {
     @Test
     public void checkBalanceTest(){
         Bank testBank = new Bank(200);
-        assertEquals(200,testBank.checkBalance());
+        assertEquals(200,testBank.getBalance());
         Bank testBank2 = new Bank(3500.69);
-        assertEquals(3500.69,testBank2.checkBalance());
+        assertEquals(3500.69,testBank2.getBalance());
     }
 
     @Test
