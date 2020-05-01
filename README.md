@@ -21,7 +21,17 @@ Class Diagram: https://drive.google.com/file/d/1NeR8zkYV1fFxN-1elfnRv5uLTxr-Xswl
 
 GUI State Diagram: https://drive.google.com/file/d/1-8liszg1oJcFfCxlC0mrVDSQ9n0lv5nL/view?usp=sharing
 
-Use Case Diagram: https://app.diagrams.net/#G1dsFjHImwYMCaLw6bZHKE7KBEABDghRSK
+Use Case Diagram: https://app.diagrams.net/#G1dsFjHImwYMCaLw6bZHKE7KBEABDghRSK  
+
+Retrospective: https://docs.google.com/document/d/1-BS5YgGdF8z8QSnWQ9zfx5iwX0s0c9YucO0qezdpPSo/edit?usp=sharing
+
+### Sprint 3
+
+Goal: Finish investor class and have a user interface where the investor can buy stock in ABSs and check on their existing ABSs, aswell as check their balance.
+
+Class Diagram: https://drive.google.com/file/d/1NeR8zkYV1fFxN-1elfnRv5uLTxr-Xswl/view
+
+User Testing to Test for Completion: https://docs.google.com/document/d/12lBUoRwMTkJVlYdgZoZrjTXnMMDnMOM0jDB3RgEPd_I/edit?usp=sharing
 
 Links
 ------
