@@ -6,7 +6,7 @@ import java.util.List;
 public class AssetBackedSecurity {
 
     private List<Loan> loans;
-    private double riskValue;
+    private double riskValue = 0;
 
     public AssetBackedSecurity(){
         loans = new ArrayList<>();
@@ -22,16 +22,16 @@ public class AssetBackedSecurity {
             totalInterest += loan.getInterest();
         }
 
-        riskValue = totalInterest / loans.size();
+        if(loans.size() != 0){
+            riskValue = Math.round((totalInterest / loans.size()) * 100000.0) / 100000.0;
+        }
+
     }
 
 
     public double getRiskValue(){
         generateRiskValue();
         return riskValue;
-    }
-    public List<Loan> getLoanList(){
-        return loans;
     }
     public int numberOfLoans(){
         return loans.size();

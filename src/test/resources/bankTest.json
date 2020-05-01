@@ -1,0 +1,37 @@
+{
+  "customers" : [ ],
+  "loans" : [ {
+    "key" : 1,
+    "value" : {
+      "interest" : 0.05,
+      "balance" : 1000.0
+    }
+  }, {
+    "key" : 2,
+    "value" : {
+      "interest" : 0.05,
+      "balance" : 1000.0
+    }
+  }, {
+    "key" : 3,
+    "value" : {
+      "interest" : 0.1,
+      "balance" : 500.0
+    }
+  }, {
+    "key" : 4,
+    "value" : {
+      "interest" : 0.1,
+      "balance" : 500.0
+    }
+  }, {
+    "key" : 5,
+    "value" : {
+      "interest" : 0.1,
+      "balance" : 500.0
+    }
+  } ],
+  "borrowerLoanPairs" : [ ],
+  "balance" : 10000.0,
+  "SPVLoanPairs" : [ ]
+}
