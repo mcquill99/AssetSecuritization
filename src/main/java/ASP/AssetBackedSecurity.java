@@ -22,7 +22,7 @@ public class AssetBackedSecurity {
             totalInterest += loan.getInterest();
         }
 
-        riskValue = totalInterest / loans.size();
+        riskValue = Math.round((totalInterest / loans.size()) * 100000.0) / 100000.0;
     }
 
 

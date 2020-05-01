@@ -25,6 +25,15 @@ public class jsonTest {
 
         return toReturn;
     }
+    public double getAverageInterest(List<Loan> loans){
+        double toReturn = 0;
+        for (Loan loan : loans) {
+            double interest = loan.getInterest();
+            toReturn = toReturn + interest;
+        }
+
+        return Math.round((toReturn / loans.size()) * 100000.0) / 100000.0;
+    }
 
     @Test
     public void loanTest() throws IOException {
@@ -37,7 +46,13 @@ public class jsonTest {
 
     }
     @Test
-    public void ASPTest(){
+    public void ASPTest() throws IOException {
+        List<Loan> loans = generateLoanList(5,5,10);
+        AssetBackedSecurity asp = new AssetBackedSecurity(loans);
+        JsonUtil.toJsonFile("src/test/resources/absTest.json", asp);
+        AssetBackedSecurity asp2 = JsonUtil.fromJsonFile("src/test/resources/absTest.json", AssetBackedSecurity.class);
+        assertEquals(asp.getLoanList().get(0).getBalance(), asp2.getLoanList().get(0).getBalance());
+        assertEquals(asp.getRiskValue(), asp2.getRiskValue());
 
     }
     @Test
