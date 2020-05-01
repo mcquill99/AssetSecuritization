@@ -1,35 +1,23 @@
 package ASP;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import util.KeyValueContainer;
-import util.ObjectUtils;
-
-import java.util.*;
+import java.util.HashMap;
 import java.lang.Math;
+import java.util.Map;
+import java.util.Random;
+import java.util.Iterator;
 
 
 public class Bank {
-    @JsonIgnore
-    public Map<Integer,Borrower> customers;
-    @JsonIgnore
-    public Map<Integer,Loan> loans;
-    @JsonIgnore
-    public Map<Loan,Borrower> borrowerLoanPairs;
-    @JsonIgnore
-    public Map<Integer,SPV> SPVLoanPairs;
-    @JsonIgnore
+    public HashMap<Integer,Borrower> customers = new HashMap<>();
+    public HashMap<Integer,Loan> loans = new HashMap<>();
+    public HashMap<Loan,Borrower> borrowerLoanPairs = new HashMap<>();
+    public HashMap<Integer,SPV> SPVLoanPairs = new HashMap<>();
+
     double balance;
 
     public Bank(double balance){
         this.balance = balance;
-        customers = new HashMap<>();
-        loans = new HashMap<>();
-        borrowerLoanPairs = new HashMap<>();
-        SPVLoanPairs = new HashMap<>();
     }
-
 
     public void createLoan(double balance, double interest){
 
@@ -40,6 +28,9 @@ public class Bank {
         loans.put((loans.size()+1),loanCreated);
     }
 
+    public double checkBalance(){
+        return this.balance;
+    }
 
     public void releaseAsset(int loanID){
         Loan loanCreated = new Loan(20,20);
@@ -69,7 +60,7 @@ public class Bank {
 
         borrower.receiveLoan(newLoan);
     }
-    public void sellLoanToSPV(double expectedInterest, SPV spv) {
+    void sellLoanToSPV(double expectedInterest, SPV spv) {
         expectedInterest = expectedInterest/100;
         Iterator<HashMap.Entry<Integer, Loan>> itr = loans.entrySet().iterator();
         int loanID = 0;
@@ -88,53 +79,6 @@ public class Bank {
     }
     public static int generateInterestRate(int min, int max){
         return (int)(Math.random()*((max-min)+1))+min;
-    }
-
-    //for json
-    public Bank(){
-        this.balance = 0;
-    }
-    @JsonProperty("customers")
-    public void setCustomers(List<KeyValueContainer<Integer, Borrower>> customers){
-        this.customers = ObjectUtils.toMap(customers);
-    }
-    @JsonProperty("loans")
-    public void setLoans(List<KeyValueContainer<Integer, Loan>>  loans){
-        this.loans = ObjectUtils.toMap(loans);
-    }
-    @JsonProperty("borrowerLoanPairs")
-    public void setBorrowerLoanPairs(List<KeyValueContainer<Loan, Borrower>>  borrowerLoanPairs){
-        this.borrowerLoanPairs = ObjectUtils.toMap(borrowerLoanPairs);
-    }
-    @JsonProperty("SPVLoanPairs")
-    public void setSPVLoanPairs(List<KeyValueContainer<Integer, SPV>>  SPVLoanPairs){
-        this.SPVLoanPairs = ObjectUtils.toMap(SPVLoanPairs);
-    }
-    @JsonProperty("customers")
-    public List<KeyValueContainer<Integer,Borrower>> getCustomers(){
-        return ObjectUtils.toList(customers);
-    }
-    @JsonProperty("loans")
-    public List<KeyValueContainer<Integer,Loan>> getLoans(){
-        return ObjectUtils.toList(loans);
-    }
-    @JsonProperty("borrowerLoanPairs")
-    public List<KeyValueContainer<Loan,Borrower>> getBorrowerLoanPairs(){
-        return ObjectUtils.toList(borrowerLoanPairs);
-    }
-    @JsonProperty("SPVLoanPairs")
-    public List<KeyValueContainer<Integer,SPV>> getSPVLoanPairs(){
-        return ObjectUtils.toList(SPVLoanPairs);
-    }
-
-    @JsonProperty("balance")
-    public double getBalance(){
-        return this.balance;
-    }
-
-    @JsonProperty("balance")
-    public void setBalance(double balance){
-        this.balance = balance;
     }
 
 

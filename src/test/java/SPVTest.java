@@ -26,7 +26,7 @@ public class SPVTest {
     }
 
     public boolean checkABS(double min, double max, AssetBackedSecurity absToCheck){
-        for(Loan loan: absToCheck.getLoans()){
+        for(Loan loan: absToCheck.getLoanList()){
             if(loan.getInterest() < (min / 100) || loan.getInterest() > (max / 100)){
                 return false;
             }

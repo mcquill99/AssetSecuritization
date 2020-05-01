@@ -4,30 +4,26 @@ import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 public class SPV {
     private List<Loan> loans;
     public List<AssetBackedSecurity> ABSList = new ArrayList<>();
-    public Map<Loan, Boolean> isInABS;
+    public HashMap<Loan, Boolean> isInABS = new HashMap<>();
+    private double balance;
+    public double SPVriskAverage;
 
 
     public SPV() {
         loans = new ArrayList<>();
         ABSList = new ArrayList<>();
-        isInABS  = new HashMap<>();
     }
 
     public List<Loan> getLoans(){
         return loans;
     }
-    public Map<Loan, Boolean> getABSisInABS(){
-        return isInABS;
-    }
 
     public SPV(List<Loan> listOfLoans) {
         loans = listOfLoans;
-        isInABS  = new HashMap<>();
         for (Loan loan : loans) {
             isInABS.put(loan, false);
         }
@@ -74,17 +70,6 @@ public class SPV {
             ABSrisk.add(currentABSrisk);
         }
         return ABSrisk;
-    }
-
-    //for json
-    public void setLoans(List<Loan> loans){
-        this.loans = loans;
-    }
-    public void setABSList(List<AssetBackedSecurity> ABSList){
-        this.ABSList = ABSList;
-    }
-    public void setIsInABS(HashMap<Loan, Boolean> isInABS){
-        this.isInABS = isInABS;
     }
 }
 
