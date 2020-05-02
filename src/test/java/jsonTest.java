@@ -1,5 +1,6 @@
 import ASP.*;
 import IO.BankWriter;
+import IO.SPVWriter;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.Test;
 
@@ -48,12 +49,12 @@ public class jsonTest {
 
     }
     @Test
-    public void ASPTest() throws IOException {
+    public void ABSTest() throws IOException {
         List<Loan> loans = generateLoanList(5,5,10);
         AssetBackedSecurity asp = new AssetBackedSecurity(loans);
         JsonUtil.toJsonFile("src/test/resources/absTest.json", asp);
         AssetBackedSecurity asp2 = JsonUtil.fromJsonFile("src/test/resources/absTest.json", AssetBackedSecurity.class);
-        assertEquals(asp.getLoanList().get(0).getBalance(), asp2.getLoanList().get(0).getBalance());
+        assertEquals(asp.getLoans().get(0).getBalance(), asp2.getLoans().get(0).getBalance());
         assertEquals(asp.getRiskValue(), asp2.getRiskValue());
 
     }
@@ -79,7 +80,19 @@ public class jsonTest {
 
     }
     @Test
-    public void spvTest(){
+    public void spvTest() throws insufficientLoansException, IOException {
+        List<Loan> loans = generateLoanList(5,5,10);
+        SPV spv = new SPV(loans);
+        spv.setId(1);
+        spv.createABS(5,10,3);
+        SPVWriter spvWriter = new SPVWriter(spv);
+
+        JsonUtil.toJsonFile("src/test/resources/spvTest.json", spvWriter);
+
+        SPVWriter spvWriter2 = JsonUtil.fromJsonFile("src/test/resources/spvTest.json", SPVWriter.class);
+        SPV spv2 = spvWriter2.createSPV();
+
+        assertEquals(spv.getId(), spv2.getId());
 
     }
 

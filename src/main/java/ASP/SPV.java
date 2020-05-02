@@ -9,7 +9,7 @@ public class SPV {
     private List<Loan> loans;
     public List<AssetBackedSecurity> ABSList = new ArrayList<>();
     //public HashMap<Loan, Boolean> isInABS = new HashMap<>();
-    private double balance;
+    private double balance = 0;
     public double SPVriskAverage;
     private int id = 0;
 
@@ -19,22 +19,12 @@ public class SPV {
         ABSList = new ArrayList<>();
     }
 
-    public List<Loan> getLoans(){
-        return loans;
-    }
-
-    public void setId(int id){
-        this.id = id;
-    }
-    public int getId(){
-        return id;
-    }
 
     public SPV(List<Loan> listOfLoans) {
         loans = listOfLoans;
-        /*for (Loan loan : loans) {
-            isInABS.put(loan, false);
-        }*/
+        for (Loan loan : loans) {
+            loan.setSPVId(id);
+        }
     }
 
     public void buyLoan(double interestRate, Bank bank, SPV spv) {
@@ -79,6 +69,41 @@ public class SPV {
         }
         return ABSrisk;
     }
+
+    public List<Loan> getLoans(){
+        return loans;
+    }
+
+    public void setId(int id){
+        this.id = id;
+        for (Loan loan : loans) {
+            loan.setSPVId(id);
+        }
+    }
+    public int getId(){
+        return id;
+    }
+
+    public void setLoans(List<Loan> loans){
+        this.loans = loans;
+    }
+
+    public double getBalance(){
+        return balance;
+    }
+    public void setBalance(double balance){
+        this.balance = balance;
+    }
+    public double getSPVriskAverage(){
+        return SPVriskAverage;
+    }
+    public void setSPVriskAverage(double SPVriskAverage){
+        this.SPVriskAverage = SPVriskAverage;
+    }
+    public void setABSList(List<AssetBackedSecurity> ABSList){
+        this.ABSList = ABSList;
+    }
+
 }
 
 

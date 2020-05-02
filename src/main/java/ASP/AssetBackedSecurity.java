@@ -30,9 +30,6 @@ public class AssetBackedSecurity {
         generateRiskValue();
         return riskValue;
     }
-    public List<Loan> getLoanList(){
-        return loans;
-    }
     public int numberOfLoans(){
         return loans.size();
     }
