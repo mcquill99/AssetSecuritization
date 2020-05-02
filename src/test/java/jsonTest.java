@@ -1,4 +1,6 @@
 import ASP.*;
+import IO.BankWriter;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
@@ -56,7 +58,24 @@ public class jsonTest {
 
     }
     @Test
-    public void bankTest(){
+    public void bankTest() throws IOException {
+        Bank bank = new Bank(1000);
+        bank.createLoan(1000,5);
+        bank.createLoan(500, 5);
+        bank.createLoan(1500, 10);
+        bank.createLoan(2000, 10);
+        bank.createLoan(5000, 20);
+
+        BankWriter bankWriter = new BankWriter(bank);
+        JsonUtil.toJsonFile("src/test/resources/bankTest.json", bankWriter);
+        //ObjectMapper mapper = new ObjectMapper();
+        //String json = mapper.writeValueAsString(bankWriter);
+        //System.out.println(json);
+        //BankWriter writer2 = mapper.readValue(json, BankWriter.class);
+        BankWriter bankWriter2 = JsonUtil.fromJsonFile("src/test/resources/bankTest.json", BankWriter.class);
+        Bank bank2 = bankWriter2.CreateBank();
+        assertEquals(bank.getBalance(), bank2.getBalance());
+
 
     }
     @Test

@@ -8,9 +8,10 @@ import java.util.List;
 public class SPV {
     private List<Loan> loans;
     public List<AssetBackedSecurity> ABSList = new ArrayList<>();
-    public HashMap<Loan, Boolean> isInABS = new HashMap<>();
+    //public HashMap<Loan, Boolean> isInABS = new HashMap<>();
     private double balance;
     public double SPVriskAverage;
+    private int id = 0;
 
 
     public SPV() {
@@ -22,11 +23,18 @@ public class SPV {
         return loans;
     }
 
+    public void setId(int id){
+        this.id = id;
+    }
+    public int getId(){
+        return id;
+    }
+
     public SPV(List<Loan> listOfLoans) {
         loans = listOfLoans;
-        for (Loan loan : loans) {
+        /*for (Loan loan : loans) {
             isInABS.put(loan, false);
-        }
+        }*/
     }
 
     public void buyLoan(double interestRate, Bank bank, SPV spv) {
@@ -40,9 +48,9 @@ public class SPV {
         }
         List<Loan> absLoans = new ArrayList<>();
         for (Loan loan : loans) {
-            if (loan.getInterest() >= (minInterest / 100) && loan.getInterest() <= (maxInterest / 100) && !isInABS.get(loan) && absLoans.size() < numLoans) {
+            if (loan.getInterest() >= (minInterest / 100) && loan.getInterest() <= (maxInterest / 100) && !loan.getIsInAbs() && absLoans.size() < numLoans) {
                 absLoans.add(loan);
-                isInABS.replace(loan, true);
+                loan.setIsInAbs(true);
             }
         }
 
