@@ -3,6 +3,7 @@ package ASP;
 import java.util.HashMap;
 
 public class Borrower {
+    private int id;
     private double balance;
     private HashMap<Integer, Loan> loanMap = new HashMap<>();
 
@@ -12,6 +13,12 @@ public class Borrower {
         this.balance = balance;
     }
 
+    public int getId(){
+        return id;
+    }
+    public void setId(int id){
+        this.id = id;
+    }
     public double checkBalance(){
         return this.balance;
     }

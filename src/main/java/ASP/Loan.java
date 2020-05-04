@@ -3,6 +3,10 @@ package ASP;
 public class Loan {
     private double interest;
     private double balance;
+    private int id;
+    private int borrowerId = 0;
+    private int SPVId = 0;
+    private boolean isInAbs = false;
 
     public Loan(double balance, double interest){
         if(!isValidAmount(balance) || !isValidAmount(interest)){ //check if num is valid
@@ -10,6 +14,35 @@ public class Loan {
         }
         this.interest = interest / 100;
         this.balance = balance;
+    }
+
+    public int getId(){
+        return id;
+    }
+
+    public void setId(int id){
+        this.id = id;
+    }
+
+    public int getBorrowerId(){
+        return borrowerId;
+    }
+    public void setBorrowerId(int borrowerId){
+        this.borrowerId = borrowerId;
+    }
+
+    public int getSPVId(){
+        return SPVId;
+    }
+    public void setSPVId(int SPVId){
+        this.SPVId = SPVId;
+    }
+
+    public boolean getIsInAbs(){
+        return isInAbs;
+    }
+    public void setIsInAbs(boolean bool){
+        isInAbs = bool;
     }
 
     public void accrueInterest(){

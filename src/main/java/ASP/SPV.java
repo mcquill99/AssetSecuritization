@@ -8,10 +8,10 @@ import java.util.List;
 public class SPV {
     private List<Loan> loans;
     public List<AssetBackedSecurity> ABSList = new ArrayList<>();
-    public HashMap<Integer, Loan> loan = new HashMap<>();
-    private HashMap<Loan, Boolean> isInABS = new HashMap<>();
-    private double balance;
+    //public HashMap<Loan, Boolean> isInABS = new HashMap<>();
+    private double balance = 0;
     public double SPVriskAverage;
+    private int id = 0;
 
 
     public SPV() {
@@ -19,10 +19,11 @@ public class SPV {
         ABSList = new ArrayList<>();
     }
 
+
     public SPV(List<Loan> listOfLoans) {
         loans = listOfLoans;
         for (Loan loan : loans) {
-            isInABS.put(loan, false);
+            loan.setSPVId(id);
         }
     }
 
@@ -37,9 +38,9 @@ public class SPV {
         }
         List<Loan> absLoans = new ArrayList<>();
         for (Loan loan : loans) {
-            if (loan.getInterest() >= (minInterest / 100) && loan.getInterest() <= (maxInterest / 100) && !isInABS.get(loan) && absLoans.size() < numLoans) {
+            if (loan.getInterest() >= (minInterest / 100) && loan.getInterest() <= (maxInterest / 100) && !loan.getIsInAbs() && absLoans.size() < numLoans) {
                 absLoans.add(loan);
-                isInABS.replace(loan, true);
+                loan.setIsInAbs(true);
             }
         }
 
@@ -68,6 +69,41 @@ public class SPV {
         }
         return ABSrisk;
     }
+
+    public List<Loan> getLoans(){
+        return loans;
+    }
+
+    public void setId(int id){
+        this.id = id;
+        for (Loan loan : loans) {
+            loan.setSPVId(id);
+        }
+    }
+    public int getId(){
+        return id;
+    }
+
+    public void setLoans(List<Loan> loans){
+        this.loans = loans;
+    }
+
+    public double getBalance(){
+        return balance;
+    }
+    public void setBalance(double balance){
+        this.balance = balance;
+    }
+    public double getSPVriskAverage(){
+        return SPVriskAverage;
+    }
+    public void setSPVriskAverage(double SPVriskAverage){
+        this.SPVriskAverage = SPVriskAverage;
+    }
+    public void setABSList(List<AssetBackedSecurity> ABSList){
+        this.ABSList = ABSList;
+    }
+
 }
 
 
