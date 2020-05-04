@@ -7,6 +7,8 @@ public class AssetBackedSecurity {
 
     private List<Loan> loans;
     private double riskValue;
+    private int id;
+    private int spvid = 0;
 
     public AssetBackedSecurity(){
         loans = new ArrayList<>();
@@ -41,6 +43,21 @@ public class AssetBackedSecurity {
 
     public void setLoans(List<Loan> loans){
         this.loans = loans;
+    }
+
+    public void setSpvid(int id){
+        this.spvid = id;
+    }
+
+    public int getSpvid(){
+        return spvid;
+    }
+
+    public void setId(int id){
+        this.id = id;
+    }
+    public int getId(){
+        return id;
     }
 
 }
