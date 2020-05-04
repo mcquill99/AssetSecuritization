@@ -29,4 +29,13 @@ public class Investor {
             }
         }
     }
+
+    public void selectABSFromList(int selection, List<AssetBackedSecurity> catalog){
+        ABSinvestedIn.add(catalog.get(selection));
+    }
+
+    public void buyABS(SPV spv, int minRisk, int maxRisk){
+        listABS(spv,minRisk,maxRisk);
+
+    }
 }
