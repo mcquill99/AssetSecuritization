@@ -32,7 +32,6 @@ public class AssetBackedSecurity {
     }
     public List<Loan> getLoanList(){
         return loans;
-
     }
     public int numberOfLoans(){
         return loans.size();

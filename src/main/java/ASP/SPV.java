@@ -8,8 +8,7 @@ import java.util.List;
 public class SPV {
     private List<Loan> loans;
     public List<AssetBackedSecurity> ABSList = new ArrayList<>();
-    public HashMap<Integer, Loan> loan = new HashMap<>();
-    private HashMap<Loan, Boolean> isInABS = new HashMap<>();
+    public HashMap<Loan, Boolean> isInABS = new HashMap<>();
     private double balance;
     public double SPVriskAverage;
 
@@ -17,6 +16,10 @@ public class SPV {
     public SPV() {
         loans = new ArrayList<>();
         ABSList = new ArrayList<>();
+    }
+
+    public List<Loan> getLoans(){
+        return loans;
     }
 
     public SPV(List<Loan> listOfLoans) {

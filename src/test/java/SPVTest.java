@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
+
 import ASP.AssetBackedSecurity;
 import ASP.Loan;
 import ASP.SPV;
@@ -103,8 +104,9 @@ public class SPVTest {
         spv.createABS(7,15,2);
 
 
-        List<Double> list1 = spv.AssignRiskValue();
+        spv.AssignRiskValue();
 
+        List<Double> list1 = spv.AssignRiskValue();
 
         Double d;
         assertEquals(list1.get(0), d = spv.getABSList().get(0).getRiskValue());
