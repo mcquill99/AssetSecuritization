@@ -13,6 +13,7 @@ public class SPVWriter {
     private double balance;
     private double SPVriskAverage;
     private int id = 0;
+    private String password;
 
     public SPVWriter(SPV spv){
         loans = spv.getLoans().toArray(new Loan[0]);
@@ -20,6 +21,7 @@ public class SPVWriter {
         balance = spv.getBalance();
         SPVriskAverage = spv.getSPVriskAverage();
         id = spv.getId();
+        this.password = spv.getPassword();
     }
 
     public SPVWriter(){
@@ -32,6 +34,7 @@ public class SPVWriter {
         toReturn.setABSList(Arrays.asList(ABSList));
         toReturn.setBalance(balance);
         toReturn.setSPVriskAverage(SPVriskAverage);
+        toReturn.setPassword(password);
         return toReturn;
     }
 
@@ -67,6 +70,12 @@ public class SPVWriter {
     }
     public AssetBackedSecurity[] getABSList() {
         return ABSList;
+    }
+    public String getPassword(){
+        return password;
+    }
+    public void setPassword(String password){
+        this.password = password;
     }
 
 }

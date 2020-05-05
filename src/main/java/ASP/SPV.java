@@ -12,6 +12,7 @@ public class SPV implements SpvAPI{
     private double balance = 0;
     public double SPVriskAverage;
     private int id = 0;
+    private String password = "";
 
 
     public SPV() {
@@ -104,6 +105,12 @@ public class SPV implements SpvAPI{
     }
     public void setABSList(List<AssetBackedSecurity> ABSList){
         this.ABSList = ABSList;
+    }
+    public String getPassword(){
+        return password;
+    }
+    public void setPassword(String pass){
+        this.password = pass;
     }
 
 }
