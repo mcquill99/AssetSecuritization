@@ -1,4 +1,8 @@
 {
   "interest" : 0.05,
-  "balance" : 500.0
+  "balance" : 500.0,
+  "id" : 0,
+  "borrowerId" : 0,
+  "isInAbs" : false,
+  "spvid" : 0
 }

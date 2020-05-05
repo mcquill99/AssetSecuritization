@@ -1,35 +1,41 @@
 {
   "loans" : [ {
-    "interest" : 0.08,
-    "balance" : 500.0
-  }, {
-    "interest" : 0.1,
-    "balance" : 500.0
-  }, {
-    "interest" : 0.1,
-    "balance" : 500.0
-  }, {
-    "interest" : 0.08,
-    "balance" : 500.0
+    "interest" : 0.09,
+    "balance" : 500.0,
+    "id" : 0,
+    "borrowerId" : 0,
+    "isInAbs" : false,
+    "spvid" : 0
   }, {
     "interest" : 0.09,
-    "balance" : 500.0
+    "balance" : 500.0,
+    "id" : 0,
+    "borrowerId" : 0,
+    "isInAbs" : false,
+    "spvid" : 0
+  }, {
+    "interest" : 0.09,
+    "balance" : 500.0,
+    "id" : 0,
+    "borrowerId" : 0,
+    "isInAbs" : false,
+    "spvid" : 0
+  }, {
+    "interest" : 0.05,
+    "balance" : 500.0,
+    "id" : 0,
+    "borrowerId" : 0,
+    "isInAbs" : false,
+    "spvid" : 0
+  }, {
+    "interest" : 0.08,
+    "balance" : 500.0,
+    "id" : 0,
+    "borrowerId" : 0,
+    "isInAbs" : false,
+    "spvid" : 0
   } ],
-  "riskValue" : 0.09,
-  "loanList" : [ {
-    "interest" : 0.08,
-    "balance" : 500.0
-  }, {
-    "interest" : 0.1,
-    "balance" : 500.0
-  }, {
-    "interest" : 0.1,
-    "balance" : 500.0
-  }, {
-    "interest" : 0.08,
-    "balance" : 500.0
-  }, {
-    "interest" : 0.09,
-    "balance" : 500.0
-  } ]
+  "riskValue" : 0.08,
+  "id" : 0,
+  "spvid" : 0
 }
