@@ -21,21 +21,17 @@ public class Investor {
     }
 
     public void listABS (SPV spv, int minRisk, int maxRisk ){
-        List<AssetBackedSecurity> catalog = new ArrayList<>();
 
-        for (AssetBackedSecurity abs: spv.ABSList ){
+        for (AssetBackedSecurity abs: spv.getABSList()){
             if (abs.getRiskValue() >= minRisk && abs.getRiskValue() <= maxRisk ){
-                catalog.add(abs);
+                System.out.println(abs.getId());
+                System.out.println(abs.getRiskValue());
+
             }
         }
     }
 
-    public void selectABSFromList(int selection, List<AssetBackedSecurity> catalog){
-        ABSinvestedIn.add(catalog.get(selection));
-    }
-
-    public void buyABS(SPV spv, int minRisk, int maxRisk){
-        listABS(spv,minRisk,maxRisk);
-
+    public void buyABS(int ABSid, SPV spv, int shares){
+        ABSinvestedIn.add(spv.ABSList.get(ABSid));
     }
 }
