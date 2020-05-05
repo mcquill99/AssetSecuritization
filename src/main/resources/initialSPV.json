@@ -37,6 +37,7 @@
   } ],
   "balance" : 0.0,
   "id" : 5,
+  "password" : "password",
   "spvriskAverage" : 0.0,
   "abslist" : [ {
     "loans" : [ {
@@ -118,6 +119,7 @@
   } ],
   "balance" : 0.0,
   "id" : 10,
+  "password" : "pass123",
   "spvriskAverage" : 0.0,
   "abslist" : [ {
     "loans" : [ {
