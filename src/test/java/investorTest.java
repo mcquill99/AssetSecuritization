@@ -55,6 +55,7 @@ public class investorTest {
     @Test
     public void buyABSTest() throws insufficientLoansException, insufficientSharesException {
         Investor investor = new Investor(100, new ArrayList<>());
+        investor.setId(1);
         List<Loan> loanList = generateLoanList(10, 5, 5);
         SPV spv = new SPV(loanList);
         spv.createABS(5,5,5);
