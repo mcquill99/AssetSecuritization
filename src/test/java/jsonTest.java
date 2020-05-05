@@ -1,7 +1,6 @@
 import ASP.*;
 import IO.BankWriter;
 import IO.SPVWriter;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
@@ -90,7 +89,7 @@ public class jsonTest {
         JsonUtil.toJsonFile("src/test/resources/spvTest.json", spvWriter);
 
         SPVWriter spvWriter2 = JsonUtil.fromJsonFile("src/test/resources/spvTest.json", SPVWriter.class);
-        SPV spv2 = spvWriter2.createSPV();
+        SPV spv2 = spvWriter2.CreateSPV();
 
         assertEquals(spv.getId(), spv2.getId());
 

@@ -23,9 +23,10 @@ public class Bank {
 
         //create the loan
         Loan loanCreated = new Loan(balance,interest);
+        loanCreated.setId((loans.size()+1));
 
         //add the loan to the collection
-        loans.put((loans.size()+1),loanCreated);
+        loans.put(loanCreated.getId(),loanCreated);
     }
 
     public double checkBalance(){

@@ -26,7 +26,7 @@ public class SPVWriter {
 
     }
 
-    public SPV createSPV(){
+    public SPV CreateSPV(){
         SPV toReturn = new SPV(Arrays.asList(loans));
         toReturn.setId(id);
         toReturn.setABSList(Arrays.asList(ABSList));

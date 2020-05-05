@@ -49,6 +49,8 @@ public class SPV {
         }
 
         AssetBackedSecurity absToAdd = new AssetBackedSecurity(absLoans);
+        absToAdd.setSpvid(id);
+        absToAdd.setId(ABSList.size() + 1);
         ABSList.add(absToAdd);
 
         return absToAdd;
