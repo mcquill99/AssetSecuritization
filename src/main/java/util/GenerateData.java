@@ -34,6 +34,7 @@ public class GenerateData {
         bank1.createLoan(500,15);
 
         SPV spv1 = new SPV(); //creates spv and buys loans to group SPVs
+        spv1.setPassword("password");
         spv1.setId(5);
         spv1.buyLoan(5, bank1, spv1);
         spv1.buyLoan(10, bank1, spv1);
@@ -43,6 +44,7 @@ public class GenerateData {
         spv1.createABS(5,10,5);
 
         SPV spv2 = new SPV();
+        spv2.setPassword("pass123");
         spv2.setId(10);
         spv2.buyLoan(15, bank1, spv2);
         spv2.buyLoan(15, bank1, spv2);

@@ -5,13 +5,14 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-public class SPV {
+public class SPV implements SpvAPI{
     private List<Loan> loans;
     public List<AssetBackedSecurity> ABSList = new ArrayList<>();
     //public HashMap<Loan, Boolean> isInABS = new HashMap<>();
     private double balance = 0;
     public double SPVriskAverage;
     private int id = 0;
+    private String password = "";
 
 
     public SPV() {
@@ -104,6 +105,12 @@ public class SPV {
     }
     public void setABSList(List<AssetBackedSecurity> ABSList){
         this.ABSList = ABSList;
+    }
+    public String getPassword(){
+        return password;
+    }
+    public void setPassword(String pass){
+        this.password = pass;
     }
 
 }
