@@ -1,4 +1,4 @@
 package ASP;
 
-public class InvestorAPI {
+public interface InvestorAPI {
 }

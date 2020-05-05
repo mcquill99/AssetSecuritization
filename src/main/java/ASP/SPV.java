@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-public class SPV {
+public class SPV implements SpvAPI{
     private List<Loan> loans;
     public List<AssetBackedSecurity> ABSList = new ArrayList<>();
     //public HashMap<Loan, Boolean> isInABS = new HashMap<>();
