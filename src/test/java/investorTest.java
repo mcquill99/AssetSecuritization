@@ -1,5 +1,6 @@
 import ASP.*;
 import org.junit.jupiter.api.Test;
+import util.JsonUtil;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -19,13 +20,17 @@ public class investorTest {
         return toReturn;
     }
 
-//    @Test
-//    public void balanceTest(){
-//        List<AssetBackedSecurity> ABSinvestedIn[] = new ABS[0];
-//        Investor Prav = new Investor(30000, ABSinvestedIn);
-//        assertEquals(30000, Prav.getBalance());
-//
-//    }
+    @Test
+    public void balanceTest(){
+        List<AssetBackedSecurity> ABSinvestedIn = new ArrayList<>();;
+        Investor Prav = new Investor(30000, ABSinvestedIn);
+        assertEquals(30000, Prav.getBalance());
+
+        Investor sean = new Investor(24.87, ABSinvestedIn);
+        assertEquals(24.87, sean.getBalance());
+
+
+    }
 
     List<Loan> loans = generateLoanList(85,5,15);
 
@@ -41,9 +46,10 @@ public class investorTest {
         locker.createABS(7,12,15);
         locker.createABS(10,15,10);
 
-        prav.listABS(locker,5,15);
-
+        System.out.println(prav.listABS(locker,5,15).get(0));
 
     }
+
+
 
 }
