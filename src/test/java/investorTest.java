@@ -22,7 +22,7 @@ public class investorTest {
 
     @Test
     public void balanceTest(){
-        List<AssetBackedSecurity> ABSinvestedIn = new ArrayList<>();;
+        List<AssetBackedSecurity> ABSinvestedIn = new ArrayList<>();
         Investor Prav = new Investor(30000, ABSinvestedIn);
         assertEquals(30000, Prav.getBalance());
 
@@ -51,5 +51,16 @@ public class investorTest {
     }
 
 
+
+    @Test
+    public void buyABSTest() throws insufficientLoansException, insufficientSharesException {
+        Investor investor = new Investor(100, new ArrayList<>());
+        List<Loan> loanList = generateLoanList(10, 5, 5);
+        SPV spv = new SPV(loanList);
+        spv.createABS(5,5,5);
+        investor.buyABS(1, spv, 15);
+        assertEquals(.05, investor.getABSinvestedIn().get(0).getRiskValue());
+        assertEquals(5, investor.getABSinvestedIn().get(0).getLoans().size());
+    }
 
 }

@@ -1,7 +1,9 @@
 package ASP;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class AssetBackedSecurity {
 
@@ -10,6 +12,7 @@ public class AssetBackedSecurity {
     private int id;
     private int spvid = 0;
     private int sharesLeft = 100;
+    private Map<Integer, Integer> investorMap = new HashMap<>();
 
     public AssetBackedSecurity(){
         loans = new ArrayList<>();
@@ -67,6 +70,18 @@ public class AssetBackedSecurity {
 
     public void setSharesLeft(int sharesLeft){
         this.sharesLeft = sharesLeft;
+    }
+
+    public void addInvestor(int id, int shares){
+        investorMap.put(id, shares);
+    }
+
+    public Map<Integer,Integer> getInvestorMap(){
+        return investorMap;
+    }
+
+    public void setInvestorMap(Map<Integer, Integer> investorMap){
+        this.investorMap = investorMap;
     }
 
 }

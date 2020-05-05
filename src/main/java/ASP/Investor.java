@@ -6,8 +6,9 @@ import java.util.List;
 public class Investor implements InvestorAPI{
     private List<AssetBackedSecurity> ABSinvestedIn;
     private double balance;
+    private int id;
 
-    public Investor(double balance, List ABSinvestedIn){
+    public Investor(double balance, List<AssetBackedSecurity> ABSinvestedIn){
         this.balance = balance;
         this.ABSinvestedIn = ABSinvestedIn;
     }
@@ -33,7 +34,24 @@ public class Investor implements InvestorAPI{
         return catalog;
     }
 
-    public void buyABS(int ABSid, SPV spv, int shares){
-        ABSinvestedIn.add(spv.ABSList.get(ABSid));
+    public void buyABS(int ABSid, SPV spv, int shares) throws insufficientSharesException {
+        spv.sellABSToInvestor(this, ABSid, shares);
     }
+
+    public List<AssetBackedSecurity> getABSInvestedIn(){
+        return ABSinvestedIn;
+    }
+    public void setABSInvestedIn(List<AssetBackedSecurity> ABSinvestedIn){
+        this.ABSinvestedIn = ABSinvestedIn;
+    }
+
+    public int getId(){
+        return id;
+    }
+
+    public void setId(int id){
+        this.id = id;
+    }
+
+
 }
