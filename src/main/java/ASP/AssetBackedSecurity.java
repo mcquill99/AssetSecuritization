@@ -9,6 +9,7 @@ public class AssetBackedSecurity {
     private double riskValue;
     private int id;
     private int spvid = 0;
+    private int sharesLeft = 100;
 
     public AssetBackedSecurity(){
         loans = new ArrayList<>();
@@ -58,6 +59,14 @@ public class AssetBackedSecurity {
     }
     public int getId(){
         return id;
+    }
+
+    public int getSharesLeft(){
+        return sharesLeft;
+    }
+
+    public void setSharesLeft(int sharesLeft){
+        this.sharesLeft = sharesLeft;
     }
 
 }

@@ -3,7 +3,7 @@ package ASP;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Investor {
+public class Investor implements InvestorAPI{
     private List<AssetBackedSecurity> ABSinvestedIn;
     private double balance;
 
