@@ -43,7 +43,7 @@ public class SPVTest {
 
         testSpv.buyLoan(10,testBank,testSpv);
         testSpv.buyLoan(20,testBank,testSpv);
-        testSpv.buyLoan(50,testBank,testSpv);
+        //testSpv.buyLoan(50,testBank,testSpv);
 
     }
 
