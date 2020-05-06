@@ -15,6 +15,10 @@ public class SPV implements SpvAPI{
     private int id = 0;
     private String password = "";
 
+    public static boolean containsInvestor(final List<Investor> list, final int id){
+        return list.stream().anyMatch(o -> o.getId() == id);
+    }
+
 
     public SPV() {
         loans = new ArrayList<>();
@@ -71,7 +75,9 @@ public class SPV implements SpvAPI{
         }
         int currentShares = absToSell.getSharesLeft();
         if(currentShares - shares >= 0){
-            investors.add(investor);
+            if(!containsInvestor(investors, investor.getId())){
+                investors.add(investor);
+            }
             absToSell.addInvestor(investor.getId(), shares);
             absToSell.setSharesLeft(currentShares - shares);
             investor.getABSinvestedIn().add(absToSell);

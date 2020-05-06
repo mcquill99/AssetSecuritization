@@ -7,23 +7,30 @@ public class Investor implements InvestorAPI{
     private List<AssetBackedSecurity> ABSinvestedIn;
     private double balance;
     private int id;
+    private String password;
 
     public Investor(double balance, List<AssetBackedSecurity> ABSinvestedIn){
         this.balance = balance;
         this.ABSinvestedIn = ABSinvestedIn;
     }
 
+    public Investor(){
+
+    }
+
     public double getBalance() {
         return balance;
     }
 
-    List<AssetBackedSecurity> catalog = new ArrayList<>();
 
     public List<AssetBackedSecurity> getABSinvestedIn() {
         return ABSinvestedIn;
     }
 
     public String listABS (SPV spv, double minRisk, double maxRisk ) throws IllegalArgumentException{
+
+        List<AssetBackedSecurity> catalog = new ArrayList<>();
+
         if (spv.ABSList.size()==0)
             throw new IllegalArgumentException("This Spv has no ABS's at the moment.");
 
@@ -66,6 +73,13 @@ public class Investor implements InvestorAPI{
             stringToReturn += "ABS id: " + ABSinvestedIn.get(i).getId() +"\n" + "Amount of shares owned: " + ABSinvestedIn.get(i).getInvestorMap().get(id) + "\n" + "Risk value: " + ABSinvestedIn.get(i).getRiskValue() +"\n" + "SPV ID: " + ABSinvestedIn.get(i).getSpvid()+"\n" +"-----------------------"+"\n" ;
         }
         return stringToReturn;
+    }
+
+    public String getPassword(){
+        return password;
+    }
+    public void setPassword(String password){
+        this.password = password;
     }
 
 
