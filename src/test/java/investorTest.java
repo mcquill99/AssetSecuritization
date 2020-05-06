@@ -42,11 +42,15 @@ public class investorTest {
         Investor prav = new Investor(20, portfolio);
 
         SPV locker = new SPV(loans);
+        assertThrows(IllegalArgumentException.class, () -> prav.listABS(locker,5,15)); // tests for an spv with no ABS
+
         locker.createABS(5,10,12);
+        System.out.println(prav.listABS(locker,5,15));
+
         locker.createABS(7,12,15);
         locker.createABS(10,15,10);
 
-        System.out.println(prav.listABS(locker,5,15).get(0));
+        System.out.println(prav.listABS(locker,5,15));
 
     }
 
@@ -62,6 +66,25 @@ public class investorTest {
         investor.buyABS(1, spv, 15);
         assertEquals(.05, investor.getABSinvestedIn().get(0).getRiskValue());
         assertEquals(5, investor.getABSinvestedIn().get(0).getLoans().size());
+    }
+
+    @Test
+    public void viewMyABSTest() throws insufficientLoansException, insufficientSharesException {
+        Investor investor = new Investor(100, new ArrayList<>());
+        List<Loan> loanList = generateLoanList(50, 5, 15);
+        SPV spv = new SPV(loanList);
+        spv.createABS(5,5,5);
+        spv.createABS(10,15,8);
+
+        System.out.println(investor.viewMyABS()); //should return an empty string exception
+
+
+        investor.buyABS(1, spv, 12);
+        investor.buyABS(2, spv, 15);
+
+        System.out.println(investor.viewMyABS());
+
+
     }
 
 }

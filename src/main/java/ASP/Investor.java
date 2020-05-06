@@ -23,15 +23,19 @@ public class Investor implements InvestorAPI{
         return ABSinvestedIn;
     }
 
-    public List<AssetBackedSecurity> listABS (SPV spv, double minRisk, double maxRisk ){
+    public String listABS (SPV spv, double minRisk, double maxRisk ) throws IllegalArgumentException{
+        if (spv.ABSList.size()==0)
+            throw new IllegalArgumentException("This Spv has no ABS's at the moment.");
+
         minRisk = minRisk * .01;
+        String stringToReturn = "";
         for (AssetBackedSecurity abs: spv.ABSList){
             if (abs.getRiskValue() >= minRisk && abs.getRiskValue() <= maxRisk ){
-                System.out.println("ABSid: " + abs.getId() + ". Associated Risk Value: " + abs.getRiskValue()*100);
+                stringToReturn += "ABS id: " + abs.getId() + ". Associated Risk Value: " + abs.getRiskValue()*100 + "\n";
                 catalog.add(abs);
             }
         }
-        return catalog;
+        return stringToReturn;
     }
 
     public void buyABS(int ABSid, SPV spv, int shares) throws insufficientSharesException {
@@ -52,6 +56,16 @@ public class Investor implements InvestorAPI{
 
     public void setBalance(double balance){
         this.balance = balance;
+    }
+
+    public String viewMyABS(){
+        if (ABSinvestedIn.size() == 0)
+            System.out.println("You have not purchased any ABS's");
+        String stringToReturn = "";
+        for (int i = 0; i < ABSinvestedIn.size();i++ ){
+            stringToReturn += "ABS id: " + ABSinvestedIn.get(i).getId() +"\n" + "Amount of shares owned: " + ABSinvestedIn.get(i).getInvestorMap().get(id) + "\n" + "Risk value: " + ABSinvestedIn.get(i).getRiskValue() +"\n" + "SPV ID: " + ABSinvestedIn.get(i).getSpvid()+"\n" +"-----------------------"+"\n" ;
+        }
+        return stringToReturn;
     }
 
 
