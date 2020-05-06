@@ -5,6 +5,7 @@ import ASP.Investor;
 import ASP.Loan;
 import ASP.SPV;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -32,13 +33,13 @@ public class SPVWriter {
     }
 
     public SPV CreateSPV(){
-        SPV toReturn = new SPV(Arrays.asList(loans));
+        SPV toReturn = new SPV(new ArrayList<>(Arrays.asList(loans)));
         toReturn.setId(id);
-        toReturn.setABSList(Arrays.asList(ABSList));
+        toReturn.setABSList(new ArrayList<>(Arrays.asList(ABSList)));
         toReturn.setBalance(balance);
         toReturn.setSPVriskAverage(SPVriskAverage);
         toReturn.setPassword(password);
-        toReturn.setInvestors(Arrays.asList(investors));
+        toReturn.setInvestors(new ArrayList<>(Arrays.asList(investors)));
         return toReturn;
     }
 

@@ -12,6 +12,7 @@ public class AssetBackedSecurity {
     private int id;
     private int spvid = 0;
     private int sharesLeft = 100;
+    private double balance = 0;
     private Map<Integer, Integer> investorMap = new HashMap<>();
 
     public AssetBackedSecurity(){
@@ -20,6 +21,9 @@ public class AssetBackedSecurity {
 
     public AssetBackedSecurity(List<Loan> loansList){
         loans = loansList;
+        for(Loan loan : loansList){
+            this.balance += loan.getBalance();
+        }
     }
 
     public void generateRiskValue(){
@@ -82,6 +86,14 @@ public class AssetBackedSecurity {
 
     public void setInvestorMap(Map<Integer, Integer> investorMap){
         this.investorMap = investorMap;
+    }
+
+    public double getBalance(){
+        return balance;
+    }
+
+    public void setBalance(double balance){
+        this.balance = balance;
     }
 
 }

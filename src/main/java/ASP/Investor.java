@@ -38,9 +38,6 @@ public class Investor implements InvestorAPI{
         spv.sellABSToInvestor(this, ABSid, shares);
     }
 
-    public List<AssetBackedSecurity> getABSInvestedIn(){
-        return ABSinvestedIn;
-    }
     public void setABSInvestedIn(List<AssetBackedSecurity> ABSinvestedIn){
         this.ABSinvestedIn = ABSinvestedIn;
     }
@@ -51,6 +48,10 @@ public class Investor implements InvestorAPI{
 
     public void setId(int id){
         this.id = id;
+    }
+
+    public void setBalance(double balance){
+        this.balance = balance;
     }
 
 

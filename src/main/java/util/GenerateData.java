@@ -1,6 +1,7 @@
 package util;
 
 import ASP.Bank;
+import ASP.Loan;
 import ASP.SPV;
 import ASP.insufficientLoansException;
 import IO.BankWriter;
@@ -32,6 +33,7 @@ public class GenerateData {
         bank1.createLoan(500,12.5);
         bank1.createLoan(5000,12.5);
         bank1.createLoan(500,15);
+        bank1.createLoan(500,90);
 
         SPV spv1 = new SPV(); //creates spv and buys loans to group SPVs
         spv1.setPassword("password");
@@ -69,6 +71,10 @@ public class GenerateData {
         Bank bankFromJSON = BankList.get(0).CreateBank(); //creates the Bank /SPVs from the Writer classes
         SPV spv1FromJSON = SPVList.get(0).CreateSPV();
         SPV spv2FromJSON = SPVList.get(1).CreateSPV();
+
+        spv1FromJSON.buyLoan(90, bankFromJSON, spv1FromJSON);
+        List<Loan> loans = spv1FromJSON.getLoans();
+        System.out.println("test");
 
     }
 

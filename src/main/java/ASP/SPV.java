@@ -82,6 +82,19 @@ public class SPV implements SpvAPI{
 
     }
 
+    public void payInvestors(){
+        for(AssetBackedSecurity abs : ABSList){
+            for(Investor investor : investors){
+
+                if(abs.getInvestorMap().get(investor.getId()) != null){
+                    double payout = abs.getBalance() * (abs.getInvestorMap().get(investor.getId()) / 100.0);
+                    payout = payout + (payout * abs.getRiskValue());
+                    investor.setBalance(investor.getBalance() +  payout);
+                }
+            }
+        }
+    }
+
     public List<AssetBackedSecurity> getABSList() {
         return ABSList;
     }

@@ -140,6 +140,13 @@
     "borrowerId" : 0,
     "isInAbs" : true,
     "spvid" : 10
+  }, {
+    "interest" : 0.9,
+    "balance" : 500.0,
+    "id" : 21,
+    "borrowerId" : 0,
+    "isInAbs" : false,
+    "spvid" : 0
   } ],
   "spvs" : [ {
     "loans" : [ {
@@ -218,12 +225,16 @@
       "riskValue" : 0.15,
       "id" : 1,
       "spvid" : 10,
-      "sharesLeft" : 100
+      "sharesLeft" : 100,
+      "balance" : 7000.0,
+      "investorMap" : { }
     } ],
+    "investors" : [ ],
     "balance" : 0.0,
     "SPVriskAverage" : 0.0,
     "id" : 10,
     "password" : "pass123",
+    "spvriskAverage" : 0.0,
     "abslist" : [ {
       "loans" : [ {
         "interest" : 0.15,
@@ -264,9 +275,10 @@
       "riskValue" : 0.15,
       "id" : 1,
       "spvid" : 10,
-      "sharesLeft" : 100
-    } ],
-    "spvriskAverage" : 0.0
+      "sharesLeft" : 100,
+      "balance" : 7000.0,
+      "investorMap" : { }
+    } ]
   }, {
     "loans" : [ {
       "interest" : 0.15,
@@ -344,12 +356,16 @@
       "riskValue" : 0.15,
       "id" : 1,
       "spvid" : 10,
-      "sharesLeft" : 100
+      "sharesLeft" : 100,
+      "balance" : 7000.0,
+      "investorMap" : { }
     } ],
+    "investors" : [ ],
     "balance" : 0.0,
     "SPVriskAverage" : 0.0,
     "id" : 10,
     "password" : "pass123",
+    "spvriskAverage" : 0.0,
     "abslist" : [ {
       "loans" : [ {
         "interest" : 0.15,
@@ -390,9 +406,10 @@
       "riskValue" : 0.15,
       "id" : 1,
       "spvid" : 10,
-      "sharesLeft" : 100
-    } ],
-    "spvriskAverage" : 0.0
+      "sharesLeft" : 100,
+      "balance" : 7000.0,
+      "investorMap" : { }
+    } ]
   }, {
     "loans" : [ {
       "interest" : 0.15,
@@ -470,12 +487,16 @@
       "riskValue" : 0.15,
       "id" : 1,
       "spvid" : 10,
-      "sharesLeft" : 100
+      "sharesLeft" : 100,
+      "balance" : 7000.0,
+      "investorMap" : { }
     } ],
+    "investors" : [ ],
     "balance" : 0.0,
     "SPVriskAverage" : 0.0,
     "id" : 10,
     "password" : "pass123",
+    "spvriskAverage" : 0.0,
     "abslist" : [ {
       "loans" : [ {
         "interest" : 0.15,
@@ -516,9 +537,10 @@
       "riskValue" : 0.15,
       "id" : 1,
       "spvid" : 10,
-      "sharesLeft" : 100
-    } ],
-    "spvriskAverage" : 0.0
+      "sharesLeft" : 100,
+      "balance" : 7000.0,
+      "investorMap" : { }
+    } ]
   }, {
     "loans" : [ {
       "interest" : 0.15,
@@ -596,12 +618,16 @@
       "riskValue" : 0.15,
       "id" : 1,
       "spvid" : 10,
-      "sharesLeft" : 100
+      "sharesLeft" : 100,
+      "balance" : 7000.0,
+      "investorMap" : { }
     } ],
+    "investors" : [ ],
     "balance" : 0.0,
     "SPVriskAverage" : 0.0,
     "id" : 10,
     "password" : "pass123",
+    "spvriskAverage" : 0.0,
     "abslist" : [ {
       "loans" : [ {
         "interest" : 0.15,
@@ -642,9 +668,10 @@
       "riskValue" : 0.15,
       "id" : 1,
       "spvid" : 10,
-      "sharesLeft" : 100
-    } ],
-    "spvriskAverage" : 0.0
+      "sharesLeft" : 100,
+      "balance" : 7000.0,
+      "investorMap" : { }
+    } ]
   }, {
     "loans" : [ {
       "interest" : 0.05,
@@ -722,12 +749,16 @@
       "riskValue" : 0.08,
       "id" : 1,
       "spvid" : 5,
-      "sharesLeft" : 100
+      "sharesLeft" : 100,
+      "balance" : 3600.0,
+      "investorMap" : { }
     } ],
+    "investors" : [ ],
     "balance" : 0.0,
     "SPVriskAverage" : 0.0,
     "id" : 5,
     "password" : "password",
+    "spvriskAverage" : 0.0,
     "abslist" : [ {
       "loans" : [ {
         "interest" : 0.05,
@@ -768,9 +799,10 @@
       "riskValue" : 0.08,
       "id" : 1,
       "spvid" : 5,
-      "sharesLeft" : 100
-    } ],
-    "spvriskAverage" : 0.0
+      "sharesLeft" : 100,
+      "balance" : 3600.0,
+      "investorMap" : { }
+    } ]
   }, {
     "loans" : [ {
       "interest" : 0.15,
@@ -848,12 +880,16 @@
       "riskValue" : 0.15,
       "id" : 1,
       "spvid" : 10,
-      "sharesLeft" : 100
+      "sharesLeft" : 100,
+      "balance" : 7000.0,
+      "investorMap" : { }
     } ],
+    "investors" : [ ],
     "balance" : 0.0,
     "SPVriskAverage" : 0.0,
     "id" : 10,
     "password" : "pass123",
+    "spvriskAverage" : 0.0,
     "abslist" : [ {
       "loans" : [ {
         "interest" : 0.15,
@@ -894,9 +930,10 @@
       "riskValue" : 0.15,
       "id" : 1,
       "spvid" : 10,
-      "sharesLeft" : 100
-    } ],
-    "spvriskAverage" : 0.0
+      "sharesLeft" : 100,
+      "balance" : 7000.0,
+      "investorMap" : { }
+    } ]
   }, {
     "loans" : [ {
       "interest" : 0.05,
@@ -974,12 +1011,16 @@
       "riskValue" : 0.08,
       "id" : 1,
       "spvid" : 5,
-      "sharesLeft" : 100
+      "sharesLeft" : 100,
+      "balance" : 3600.0,
+      "investorMap" : { }
     } ],
+    "investors" : [ ],
     "balance" : 0.0,
     "SPVriskAverage" : 0.0,
     "id" : 5,
     "password" : "password",
+    "spvriskAverage" : 0.0,
     "abslist" : [ {
       "loans" : [ {
         "interest" : 0.05,
@@ -1020,9 +1061,10 @@
       "riskValue" : 0.08,
       "id" : 1,
       "spvid" : 5,
-      "sharesLeft" : 100
-    } ],
-    "spvriskAverage" : 0.0
+      "sharesLeft" : 100,
+      "balance" : 3600.0,
+      "investorMap" : { }
+    } ]
   }, {
     "loans" : [ {
       "interest" : 0.05,
@@ -1100,12 +1142,16 @@
       "riskValue" : 0.08,
       "id" : 1,
       "spvid" : 5,
-      "sharesLeft" : 100
+      "sharesLeft" : 100,
+      "balance" : 3600.0,
+      "investorMap" : { }
     } ],
+    "investors" : [ ],
     "balance" : 0.0,
     "SPVriskAverage" : 0.0,
     "id" : 5,
     "password" : "password",
+    "spvriskAverage" : 0.0,
     "abslist" : [ {
       "loans" : [ {
         "interest" : 0.05,
@@ -1146,9 +1192,10 @@
       "riskValue" : 0.08,
       "id" : 1,
       "spvid" : 5,
-      "sharesLeft" : 100
-    } ],
-    "spvriskAverage" : 0.0
+      "sharesLeft" : 100,
+      "balance" : 3600.0,
+      "investorMap" : { }
+    } ]
   }, {
     "loans" : [ {
       "interest" : 0.05,
@@ -1226,12 +1273,16 @@
       "riskValue" : 0.08,
       "id" : 1,
       "spvid" : 5,
-      "sharesLeft" : 100
+      "sharesLeft" : 100,
+      "balance" : 3600.0,
+      "investorMap" : { }
     } ],
+    "investors" : [ ],
     "balance" : 0.0,
     "SPVriskAverage" : 0.0,
     "id" : 5,
     "password" : "password",
+    "spvriskAverage" : 0.0,
     "abslist" : [ {
       "loans" : [ {
         "interest" : 0.05,
@@ -1272,9 +1323,10 @@
       "riskValue" : 0.08,
       "id" : 1,
       "spvid" : 5,
-      "sharesLeft" : 100
-    } ],
-    "spvriskAverage" : 0.0
+      "sharesLeft" : 100,
+      "balance" : 3600.0,
+      "investorMap" : { }
+    } ]
   }, {
     "loans" : [ {
       "interest" : 0.05,
@@ -1352,12 +1404,16 @@
       "riskValue" : 0.08,
       "id" : 1,
       "spvid" : 5,
-      "sharesLeft" : 100
+      "sharesLeft" : 100,
+      "balance" : 3600.0,
+      "investorMap" : { }
     } ],
+    "investors" : [ ],
     "balance" : 0.0,
     "SPVriskAverage" : 0.0,
     "id" : 5,
     "password" : "password",
+    "spvriskAverage" : 0.0,
     "abslist" : [ {
       "loans" : [ {
         "interest" : 0.05,
@@ -1398,9 +1454,10 @@
       "riskValue" : 0.08,
       "id" : 1,
       "spvid" : 5,
-      "sharesLeft" : 100
-    } ],
-    "spvriskAverage" : 0.0
+      "sharesLeft" : 100,
+      "balance" : 3600.0,
+      "investorMap" : { }
+    } ]
   } ],
   "balance" : 100000.0
 } ]
