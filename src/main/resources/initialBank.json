@@ -142,8 +142,22 @@
     "spvid" : 10
   }, {
     "interest" : 0.9,
-    "balance" : 500.0,
+    "balance" : 3450.0,
     "id" : 21,
+    "borrowerId" : 0,
+    "isInAbs" : false,
+    "spvid" : 0
+  }, {
+    "interest" : 0.9,
+    "balance" : 3450.0,
+    "id" : 22,
+    "borrowerId" : 0,
+    "isInAbs" : false,
+    "spvid" : 0
+  }, {
+    "interest" : 0.9,
+    "balance" : 3450.0,
+    "id" : 23,
     "borrowerId" : 0,
     "isInAbs" : false,
     "spvid" : 0
@@ -234,6 +248,7 @@
     "SPVriskAverage" : 0.0,
     "id" : 10,
     "password" : "pass123",
+    "spvriskAverage" : 0.0,
     "abslist" : [ {
       "loans" : [ {
         "interest" : 0.15,
@@ -277,8 +292,7 @@
       "sharesLeft" : 100,
       "balance" : 7000.0,
       "investorMap" : { }
-    } ],
-    "spvriskAverage" : 0.0
+    } ]
   }, {
     "loans" : [ {
       "interest" : 0.15,
@@ -365,6 +379,7 @@
     "SPVriskAverage" : 0.0,
     "id" : 10,
     "password" : "pass123",
+    "spvriskAverage" : 0.0,
     "abslist" : [ {
       "loans" : [ {
         "interest" : 0.15,
@@ -408,8 +423,7 @@
       "sharesLeft" : 100,
       "balance" : 7000.0,
       "investorMap" : { }
-    } ],
-    "spvriskAverage" : 0.0
+    } ]
   }, {
     "loans" : [ {
       "interest" : 0.15,
@@ -496,6 +510,7 @@
     "SPVriskAverage" : 0.0,
     "id" : 10,
     "password" : "pass123",
+    "spvriskAverage" : 0.0,
     "abslist" : [ {
       "loans" : [ {
         "interest" : 0.15,
@@ -539,8 +554,7 @@
       "sharesLeft" : 100,
       "balance" : 7000.0,
       "investorMap" : { }
-    } ],
-    "spvriskAverage" : 0.0
+    } ]
   }, {
     "loans" : [ {
       "interest" : 0.15,
@@ -627,6 +641,7 @@
     "SPVriskAverage" : 0.0,
     "id" : 10,
     "password" : "pass123",
+    "spvriskAverage" : 0.0,
     "abslist" : [ {
       "loans" : [ {
         "interest" : 0.15,
@@ -670,8 +685,7 @@
       "sharesLeft" : 100,
       "balance" : 7000.0,
       "investorMap" : { }
-    } ],
-    "spvriskAverage" : 0.0
+    } ]
   }, {
     "loans" : [ {
       "interest" : 0.05,
@@ -863,6 +877,7 @@
     "SPVriskAverage" : 0.0,
     "id" : 5,
     "password" : "password",
+    "spvriskAverage" : 0.0,
     "abslist" : [ {
       "loans" : [ {
         "interest" : 0.05,
@@ -909,8 +924,7 @@
         "50" : 30,
         "66" : 15
       }
-    } ],
-    "spvriskAverage" : 0.0
+    } ]
   }, {
     "loans" : [ {
       "interest" : 0.15,
@@ -997,6 +1011,7 @@
     "SPVriskAverage" : 0.0,
     "id" : 10,
     "password" : "pass123",
+    "spvriskAverage" : 0.0,
     "abslist" : [ {
       "loans" : [ {
         "interest" : 0.15,
@@ -1040,8 +1055,7 @@
       "sharesLeft" : 100,
       "balance" : 7000.0,
       "investorMap" : { }
-    } ],
-    "spvriskAverage" : 0.0
+    } ]
   }, {
     "loans" : [ {
       "interest" : 0.05,
@@ -1233,6 +1247,7 @@
     "SPVriskAverage" : 0.0,
     "id" : 5,
     "password" : "password",
+    "spvriskAverage" : 0.0,
     "abslist" : [ {
       "loans" : [ {
         "interest" : 0.05,
@@ -1279,8 +1294,7 @@
         "50" : 30,
         "66" : 15
       }
-    } ],
-    "spvriskAverage" : 0.0
+    } ]
   }, {
     "loans" : [ {
       "interest" : 0.05,
@@ -1472,6 +1486,7 @@
     "SPVriskAverage" : 0.0,
     "id" : 5,
     "password" : "password",
+    "spvriskAverage" : 0.0,
     "abslist" : [ {
       "loans" : [ {
         "interest" : 0.05,
@@ -1518,8 +1533,7 @@
         "50" : 30,
         "66" : 15
       }
-    } ],
-    "spvriskAverage" : 0.0
+    } ]
   }, {
     "loans" : [ {
       "interest" : 0.05,
@@ -1711,6 +1725,7 @@
     "SPVriskAverage" : 0.0,
     "id" : 5,
     "password" : "password",
+    "spvriskAverage" : 0.0,
     "abslist" : [ {
       "loans" : [ {
         "interest" : 0.05,
@@ -1757,8 +1772,7 @@
         "50" : 30,
         "66" : 15
       }
-    } ],
-    "spvriskAverage" : 0.0
+    } ]
   }, {
     "loans" : [ {
       "interest" : 0.05,
@@ -1950,6 +1964,7 @@
     "SPVriskAverage" : 0.0,
     "id" : 5,
     "password" : "password",
+    "spvriskAverage" : 0.0,
     "abslist" : [ {
       "loans" : [ {
         "interest" : 0.05,
@@ -1996,8 +2011,7 @@
         "50" : 30,
         "66" : 15
       }
-    } ],
-    "spvriskAverage" : 0.0
+    } ]
   } ],
   "balance" : 100000.0
 } ]

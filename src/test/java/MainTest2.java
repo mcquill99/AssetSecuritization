@@ -31,7 +31,9 @@ public class MainTest2 {
         bank1.createLoan(500,12.5);
         bank1.createLoan(5000,12.5);
         bank1.createLoan(500,15);
-        bank1.createLoan(500,90);
+        bank1.createLoan(3450,90);
+        bank1.createLoan(3450,90);
+        bank1.createLoan(3450,90);
 
         SPV spv1 = new SPV(); //creates spv and buys loans to group SPVs
         spv1.setPassword("password");
@@ -202,8 +204,32 @@ public class MainTest2 {
 
 
 
-        //spv1FromJSON.buyLoan(90, bankFromJSON, spv1FromJSON);
-        //List<Loan> loans = spv1FromJSON.getLoans(); //testing if they can buy
+        spv1FromJSON.buyLoan(90, bankFromJSON, spv1FromJSON);
+        spv1FromJSON.buyLoan(90, bankFromJSON, spv1FromJSON);
+        spv1FromJSON.buyLoan(90, bankFromJSON, spv1FromJSON);
+        spv1FromJSON.createABS(80,95,3);
+        System.out.println("SPV1 Is making a new ABS after buying loans from Bank From JSON");
+        System.out.println("--------------------------------");
+        System.out.println("SPV1 FROM JSON ID: " + spv1FromJSON.getId());
+        System.out.println("SPV1 FROM JSON's ABS");
+        System.out.println("********************************");
+        System.out.println("ID: " + spv1FromJSON.getABSList().get(0).getId());
+        System.out.println("Risk value: " + spv1FromJSON.getABSList().get(0).getRiskValue());
+        System.out.println("Loans: " );
+        System.out.println("Balance | Interest");
+        for(Loan loan : spv1FromJSON.getABSList().get(0).getLoans()){
+            System.out.println("$"+loan.getBalance() + " | " + loan.getInterest());
+        }
+        System.out.println("********************************");
+        System.out.println("ID: " + spv1FromJSON.getABSList().get(1).getId());
+        System.out.println("Risk value: " + spv1FromJSON.getABSList().get(1).getRiskValue());
+        System.out.println("Loans: " );
+        System.out.println("Balance | Interest");
+        for(Loan loan : spv1FromJSON.getABSList().get(1).getLoans()){
+            System.out.println("$"+loan.getBalance() + " | " + loan.getInterest());
+        }
+        System.out.println("--------------------------------");
+
 
         investor1FromJSON.buyABS(1, spv2FromJSON, 20);
         System.out.println("Investor 1 FROM JSON is buying 20 shares from SPV2s ABS");
