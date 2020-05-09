@@ -27,12 +27,12 @@ public class UI {
         List<Bank> bankList = new ArrayList<Bank>();
         List<SPV> spvList = new ArrayList<SPV>();
         List<BankWriter> BankList = JsonUtil.listFromJsonFile("src/main/resources/initialBank.json",BankWriter.class);
-        List<SPVWriter> SPVList =  JsonUtil.listFromJsonFile("src/main/resources/initialSPV.json",SPVWriter.class); //reads lists back in to re create bank and SPVs
+        List<SPVWriter> SPVList = JsonUtil.listFromJsonFile("src/main/resources/initialSPV.json",SPVWriter.class); //reads lists back in to re create bank and SPVs
 
         for (int i = 0; i < BankList.size(); i++) {
             bankList.add(BankList.get(i).CreateBank());
         }
-        for (int i = 0; i < BankList.size(); i++) {
+        for (int i = 0; i < SPVList.size(); i++) {
             spvList.add(SPVList.get(i).CreateSPV());
         }
         read.reset();
@@ -115,9 +115,8 @@ public class UI {
                         System.out.println("Loan:\n");
                         List<Loan> loans = spvAPI.getLoans();
                         for (int i = 0; i < loans.size(); i++) {
-                            System.out.println();
+                            System.out.println("ID:\t " + (i + 1) + " Loan:\t " + loans.get(i));
                         }
-
 
                     case "logout":
                         System.out.println("Have a nice day!");
@@ -129,7 +128,7 @@ public class UI {
 
                 }
             } catch (Exception e) {
-                System.out.println(e.getMessage());
+                e.printStackTrace();
             }
         }
         while (!action.equals("logout"));

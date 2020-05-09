@@ -4,8 +4,11 @@ import ASP.AssetBackedSecurity;
 import ASP.Loan;
 import ASP.SPV;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+
+import static java.util.Arrays.asList;
 
 public class SPVWriter {
     private Loan[] loans;
@@ -29,9 +32,9 @@ public class SPVWriter {
     }
 
     public SPV CreateSPV(){
-        SPV toReturn = new SPV(Arrays.asList(loans));
+        SPV toReturn = new SPV(new ArrayList<>(asList(loans)));
         toReturn.setId(id);
-        toReturn.setABSList(Arrays.asList(ABSList));
+        toReturn.setABSList(new ArrayList<>(asList(ABSList)));
         toReturn.setBalance(balance);
         toReturn.setSPVriskAverage(SPVriskAverage);
         toReturn.setPassword(password);
