@@ -112,6 +112,24 @@ public class SPVTest {
         assertEquals(list1.get(0), d = spv.getABSList().get(0).getRiskValue());
 
     }
+    @Test
+    public void sellToInvestorTest() throws insufficientLoansException, insufficientSharesException {
+        List<Loan> loans = generateLoanList(10,5,5);
+        SPV spv = new SPV(loans);
+        spv.createABS(5,5,5);
+        Investor investor = new Investor(0, new ArrayList<>());
+        investor.buyABS(1, spv, 10);
+
+        List<AssetBackedSecurity> abs = investor.getABSinvestedIn();
+        assertEquals(abs.get(0).getBalance(), spv.getABSList().get(0).getBalance());
+        assertEquals(abs.get(0).getRiskValue(), spv.getABSList().get(0).getRiskValue());
+
+        spv.createABS(5,5,5);
+        spv.payInvestors();
+        assertEquals(262.5, investor.getBalance());
+
+        assertThrows(insufficientSharesException.class, () ->investor.buyABS(1, spv, 95));
+    }
 
 }
 

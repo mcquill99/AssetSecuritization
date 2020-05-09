@@ -1,5 +1,6 @@
 package ASP;
 
+import javax.naming.InsufficientResourcesException;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -8,11 +9,15 @@ import java.util.List;
 public class SPV implements SpvAPI{
     private List<Loan> loans;
     public List<AssetBackedSecurity> ABSList = new ArrayList<>();
-    //public HashMap<Loan, Boolean> isInABS = new HashMap<>();
+    private List<Investor> investors = new ArrayList<>();
     private double balance = 0;
     public double SPVriskAverage;
     private int id = 0;
     private String password = "";
+
+    public static boolean containsInvestor(final List<Investor> list, final int id){
+        return list.stream().anyMatch(o -> o.getId() == id);
+    }
 
 
     public SPV() {
@@ -55,6 +60,45 @@ public class SPV implements SpvAPI{
         ABSList.add(absToAdd);
 
         return absToAdd;
+    }
+
+    public void sellABSToInvestor(Investor investor,int ABSid, int shares) throws insufficientSharesException, IllegalArgumentException {
+        AssetBackedSecurity absToSell = null;
+        for(AssetBackedSecurity ABS : ABSList){
+            if(ABS.getId() == ABSid){
+                absToSell = ABS;
+                break;
+            }
+        }
+        if(absToSell == null){
+            throw new IllegalArgumentException("Please enter a valid ABS ID");
+        }
+        int currentShares = absToSell.getSharesLeft();
+        if(currentShares - shares >= 0){
+            if(!containsInvestor(investors, investor.getId())){
+                investors.add(investor);
+            }
+            absToSell.addInvestor(investor.getId(), shares);
+            absToSell.setSharesLeft(currentShares - shares);
+            investor.getABSinvestedIn().add(absToSell);
+        }
+        else{
+            throw new insufficientSharesException("Not enough shares are left in that ABS, only " + currentShares + "are left");
+        }
+
+    }
+
+    public void payInvestors(){
+        for(AssetBackedSecurity abs : ABSList){
+            for(Investor investor : investors){
+
+                if(abs.getInvestorMap().get(investor.getId()) != null){
+                    double payout = abs.getBalance() * (abs.getInvestorMap().get(investor.getId()) / 100.0);
+                    payout = payout + (payout * abs.getRiskValue());
+                    investor.setBalance(investor.getBalance() +  payout);
+                }
+            }
+        }
     }
 
     public List<AssetBackedSecurity> getABSList() {
@@ -111,6 +155,13 @@ public class SPV implements SpvAPI{
     }
     public void setPassword(String pass){
         this.password = pass;
+    }
+
+    public void setInvestors(List<Investor> investors){
+        this.investors = investors;
+    }
+    public List<Investor> getInvestors(){
+        return investors;
     }
 
 }
