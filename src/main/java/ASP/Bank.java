@@ -79,7 +79,9 @@ public class Bank {
             }
         }
         boughtLoan = loans.get(loanID);
-        spv.setId(SPVLoanPairs.size()+1);
+        if(spv.getId() == 0){
+            spv.setId(SPVLoanPairs.size()+1);
+        }
         boughtLoan.setSPVId(spv.getId());
         SPVLoanPairs.put(loanID,spv);
         spv.getLoans().add(boughtLoan);
