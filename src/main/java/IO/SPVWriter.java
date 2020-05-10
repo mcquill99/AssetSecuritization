@@ -1,15 +1,18 @@
 package IO;
 
 import ASP.AssetBackedSecurity;
+import ASP.Investor;
 import ASP.Loan;
 import ASP.SPV;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
 public class SPVWriter {
     private Loan[] loans;
     private AssetBackedSecurity[] ABSList;
+    private Investor[] investors;
     private double balance;
     private double SPVriskAverage;
     private int id = 0;
@@ -22,6 +25,7 @@ public class SPVWriter {
         SPVriskAverage = spv.getSPVriskAverage();
         id = spv.getId();
         this.password = spv.getPassword();
+        this.investors = spv.getInvestors().toArray(new Investor[0]);
     }
 
     public SPVWriter(){
@@ -29,12 +33,13 @@ public class SPVWriter {
     }
 
     public SPV CreateSPV(){
-        SPV toReturn = new SPV(Arrays.asList(loans));
+        SPV toReturn = new SPV(new ArrayList<>(Arrays.asList(loans)));
         toReturn.setId(id);
-        toReturn.setABSList(Arrays.asList(ABSList));
+        toReturn.setABSList(new ArrayList<>(Arrays.asList(ABSList)));
         toReturn.setBalance(balance);
         toReturn.setSPVriskAverage(SPVriskAverage);
         toReturn.setPassword(password);
+        toReturn.setInvestors(new ArrayList<>(Arrays.asList(investors)));
         return toReturn;
     }
 
@@ -76,6 +81,12 @@ public class SPVWriter {
     }
     public void setPassword(String password){
         this.password = password;
+    }
+    public Investor[] getInvestors(){
+        return investors;
+    }
+    public void setInvestors(Investor[] investors){
+        this.investors = investors;
     }
 
 }
