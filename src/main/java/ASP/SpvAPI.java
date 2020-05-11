@@ -11,5 +11,6 @@ public interface SpvAPI {
     List<Loan> getLoans();
     String getPassword();
     int getId();
+    void payInvestors();
 
 }

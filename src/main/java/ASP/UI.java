@@ -33,16 +33,16 @@ public class UI {
             investorList.add(InvestorList.get(i).CreateInvestor());
         }
 
-        if (Integer.parseInt(acctId) < 50) {
-            for (int i = 0; i < spvList.size(); i++) {
-                if (spvList.get(i).getId() == Integer.parseInt(acctId) && spvAPI.getPassword() == password) {
+        if (Integer.parseInt(acctId) >= 50) {
+            for (int i = 0; i < investorList.size(); i++) {
+                if (investorList.get(i).getId() == Integer.parseInt(acctId) && investorList.get(i).getPassword().equals(password)) {
                     return true;
                 }
             }
         }
         else {
-            for (int i = 0; i < investorList.size(); i++) {
-                if (investorList.get(i).getId() == Integer.parseInt(acctId) && investorAPI.getPassword() == password) {
+            for (int i = 0; i < spvList.size(); i++) {
+                if (spvList.get(i).getId() == Integer.parseInt(acctId) && spvList.get(i).getPassword().equals(password)) {
                     return true;
                 }
             }
@@ -71,7 +71,7 @@ public class UI {
         System.out.println("Hello, Please log in...");
         System.out.println("ID: ");
         id = read.next();
-        if (id != "quit" || id != "q" || id != "Quit" || id != "Q" || id != "QUIT" ) {
+        if (!id.equals("quit") && !id.equals("q") && !id.equals("Quit") && !id.equals("Q") && !id.equals("QUIT")){
             System.out.println("password: ");
             password = read.next();
             try {
@@ -79,27 +79,26 @@ public class UI {
                     System.out.println("Hello, Please log in...");
                     System.out.println("ID: ");
                     id = read.next();
-                    if (id != "quit" || id != "q" || id != "Quit" || id != "Q" || id != "QUIT" ) {
+                    if (!id.equals("quit") && !id.equals("q") && !id.equals("Quit") && !id.equals("Q") && !id.equals("QUIT")){
                         System.out.println("password: ");
                         password = read.next();
                     }
                 }
 
                 int count = Integer.parseInt(id);
-                if (count < 50){
-                    for (int i = 0; i < spvList.size(); i++) {
-                        if (Integer.parseInt(id) == spvList.get(i).getId()) {
-                            SPV spv = spvList.get(i);
-                            loggedIntoSPV(spv, bankList);
+                if (count >= 50){
+                    for (int i = 0; i < investorList.size(); i++) {
+                        if (Integer.parseInt(id) == investorList.get(i).getId()) {
+                            Investor investor = investorList.get(i);
+                            loggedIntoInvestor(spvList, investor);
+
                         }
                     }
                 }
-
-                for (int i = 0; i < investorList.size(); i++) {
-                    if (Integer.parseInt(id) == investorList.get(i).getId()) {
-                        Investor investor = investorList.get(i);
-                        loggedIntoInvestor(spvList, investor);
-
+                for (int i = 0; i < spvList.size(); i++) {
+                    if (Integer.parseInt(id) == spvList.get(i).getId()) {
+                        SPV spv = spvList.get(i);
+                        loggedIntoSPV(spv, bankList);
                     }
                 }
 
@@ -119,11 +118,13 @@ public class UI {
         double max;
         int bankID;
         int numloans;
+        double balance = spv.getBalance();
         System.out.println("WELCOME\n");
         do {
         System.out.println("Your options are: " +
                 "\n buyLoan " +
                 "\n createABS " +
+                "\n payOut " +
                 "\n viewABSList " +
                 "\n viewBankList" +
                 "\n viewLoanList" +
@@ -138,6 +139,7 @@ public class UI {
                         System.out.println("Your options are: " +
                                 "\n buyLoan " +
                                 "\n createABS " +
+                                "\n payInvestors " +
                                 "\n viewABSList " +
                                 "\n viewBankList" +
                                 "\n viewLoanList" +
@@ -203,6 +205,11 @@ public class UI {
                             System.out.println( (i + 1)+"\t"+"\t" + loan.getBalance()+"\t" + "\t" + "\t" + loan.getInterest() +"\t" + "\t" + "\t" + "\t" + loan.getIsInAbs());
                         }
                         System.out.println("\n");
+
+                    case "payInvestors":
+                        spv.payInvestors();
+                        System.out.println("Your Investors thank you!\n");
+                        break;
 
                     case "logout":
                         System.out.println("Have a nice day!");
@@ -317,5 +324,6 @@ public class UI {
             System.out.println(e.getMessage());
         }
         System.out.println("Have a nice day... Good-bye!");
+
     }
 }
