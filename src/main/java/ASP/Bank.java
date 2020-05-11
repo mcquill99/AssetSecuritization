@@ -72,6 +72,7 @@ public class Bank {
         Iterator<HashMap.Entry<Integer, Loan>> itr = loans.entrySet().iterator();
         int loanID = 0;
         Loan boughtLoan;
+        Iterator iterator = loans.entrySet().iterator();
         while (itr.hasNext()) {
             HashMap.Entry<Integer, Loan> loanToLookFor = itr.next();
             if (loanToLookFor.getValue().getInterest() == expectedInterest && !SPVLoanPairs.containsKey(loanToLookFor.getKey())) {
@@ -85,6 +86,7 @@ public class Bank {
         boughtLoan.setSPVId(spv.getId());
         SPVLoanPairs.put(loanID,spv);
         spv.getLoans().add(boughtLoan);
+
         //spv.isInABS.put(boughtLoan,false);
         //loans.remove(loanID);
     }

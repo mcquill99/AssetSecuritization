@@ -13,7 +13,8 @@ public class UI {
     private SpvAPI spvAPI;
     //private InvestorAPI investorAPI;
     private Scanner read = new Scanner(System.in);
-    private String id, password;
+    private Integer id;
+    private String password;
 
 //    public UI(SpvAPI spvAPI, InvestorAPI investorAPI){
 //        this.spvAPI = spvAPI;
@@ -38,12 +39,12 @@ public class UI {
         read.reset();
         System.out.println("Hello, Please log in...");
         System.out.println("ID: ");
-        id = read.next();
-        int newID = Integer.parseInt(id);
+        id = read.nextInt();
+        //int newID = Integer.parseInt(id);
         System.out.println("password: ");
         password = read.next();
         for (int i = 0; i < spvList.size(); i++) {
-            if (newID == spvList.get(i).getId()){
+            if (id == spvList.get(i).getId()){
                 SPV spv = spvList.get(i);
                 loggedIntoSPV(spv, bankList);
             }
@@ -58,13 +59,19 @@ public class UI {
         double max;
         int bankID;
         int numloans;
-        System.out.println("Your current balance is: " + spv.getBalance());
-
-
+        System.out.println("WELCOME\n");
         do {
-            System.out.println("Please enter an action or type 'help' for a list of commands");
-            action = read.next();
-            //action = action.toLowerCase();
+        System.out.println("Your options are: " +
+                "\n buyLoan " +
+                "\n createABS " +
+                "\n viewABSList " +
+                "\n viewBankList" +
+                "\n viewLoanList" +
+                "\n logout \n");
+
+        System.out.println("Please enter an action or type 'help' for a list of commands");
+        action = read.next();
+        //action = action.toLowerCase();
             try {
                 switch (action) {
                     case "help":
@@ -81,10 +88,17 @@ public class UI {
                         amount = read.nextDouble();
                         System.out.println("Enter Bank ID your are trying to buy from: ");
                         bankID = read.nextInt();
-                        int newBankID = bankID-1;
-                        Bank bank = banks.get(newBankID);
-                        spvAPI.buyLoan(amount, bank, spv);
-                        System.out.println("Transaction Complete... here is the list of loans owned: " + spvAPI.getLoans());
+                        bankID = bankID-1;
+                        Bank bank = banks.get(bankID);
+                        spv.buyLoan(amount, bank, spv);
+                        System.out.println("Transaction Complete... here is the list of loans owned: \n");
+                        List<Loan> loans1 = spv.getLoans();
+                        System.out.println("ID:\t " + "Loan Balance:\t " + "Loan Interest:\t " + "In ABS:\t");
+                        for (int i = 0; i < loans1.size(); i++) {
+                            Loan loan = loans1.get(i);
+                            System.out.println( (i + 1)+"\t"+"\t" + loan.getBalance()+"\t" + "\t" + "\t" + loan.getInterest() +"\t" + "\t" + "\t" + "\t" + loan.getIsInAbs());
+                        }
+                        System.out.println("\n");
                         break;
 
 
@@ -95,28 +109,40 @@ public class UI {
                         max = read.nextDouble();
                         System.out.println("Enter number of loans in this ABS");
                         numloans = read.nextInt();
-                        spvAPI.createABS(min, max, numloans);
-                        System.out.println("Creation Complete, list of ABS: " + spvAPI.getABSList());
+                        spv.createABS(min, max, numloans);
+                        System.out.println("Creation Complete, list of ABS: " + spv.getABSList()+"\n");
                         break;
 
                     case "viewABSList":
                         System.out.println("ABS:\n");
-                        System.out.println(spvAPI.getABSList());
+                        System.out.println("ID:\t " + "RiskValue:\t " + "Number of Loans:\t " + "Shares Left to Sell:\t ");
+                        for (int i = 0; i < spv.getABSList().size(); i++) {
+                            AssetBackedSecurity abs = spv.getABSList().get(i);
+                            System.out.println(abs.getId()+"\t"+"\t" + abs.getRiskValue()+"\t"+"\t"+"\t" + abs.numberOfLoans()+"\t"+"\t"+"\t"+"\t" + abs.getSharesLeft());
+                        }
+                        System.out.println("\n");
+                        break;
 
                     case "viewBankList":
                         System.out.println("Here's a list of Banks:\n");
                         //System.out.println("ID:\t Bank: ");
+                        System.out.println("ID:\t "+ " Bank:\t ");
                         for (int i = 0; i < banks.size(); i++) {
-                            System.out.println("ID:\t "+(i+1) + " Bank:\t "+ banks.get(i));
+                            Bank bank1 = banks.get(i);
+                            System.out.println((i+1) +"\t "+ bank1.getLoans());
                         }
+                        System.out.println("\n");
                         break;
 
                     case "viewLoanList":
                         System.out.println("Loan:\n");
-                        List<Loan> loans = spvAPI.getLoans();
+                        List<Loan> loans = spv.getLoans();
+                        System.out.println("ID:\t " + "Loan Balance:\t " + "Loan Interest:\t " + "In ABS:\t");
                         for (int i = 0; i < loans.size(); i++) {
-                            System.out.println("ID:\t " + (i + 1) + " Loan:\t " + loans.get(i));
+                            Loan loan = loans.get(i);
+                            System.out.println( (i + 1)+"\t"+"\t" + loan.getBalance()+"\t" + "\t" + "\t" + loan.getInterest() +"\t" + "\t" + "\t" + "\t" + loan.getIsInAbs());
                         }
+                        System.out.println("\n");
 
                     case "logout":
                         System.out.println("Have a nice day!");
