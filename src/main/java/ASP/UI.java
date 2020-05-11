@@ -12,15 +12,15 @@ import java.util.Scanner;
 
 public class UI {
     private SpvAPI spvAPI;
-    //private InvestorAPI investorAPI;
+    private InvestorAPI investorAPI;
     private Scanner read = new Scanner(System.in);
     private Integer id;
     private String password;
 
-//    public UI(SpvAPI spvAPI, InvestorAPI investorAPI){
-//        this.spvAPI = spvAPI;
-//        this.investorAPI = investorAPI;
-//    }
+    public UI(SpvAPI spvAPI, InvestorAPI investorAPI){
+       this.spvAPI = spvAPI;
+       this.investorAPI = investorAPI;
+    }
     public UI(SpvAPI spvAPI){
         this.spvAPI = spvAPI;
     }

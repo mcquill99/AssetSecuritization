@@ -6,7 +6,8 @@ public class UItest {
 
     public static void main(String[] args) throws IOException {
         SpvAPI testAPI = new SPV();
-        UI testUI = new UI(testAPI);
+        InvestorAPI investorTestAPI = new Investor();
+        UI testUI = new UI(testAPI, investorTestAPI);
         testUI.loginPage();
 
     }
