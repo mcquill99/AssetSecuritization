@@ -173,8 +173,8 @@ public class UI {
         try {
             loginPage();
         }
-        catch(IOException e) {
-            e.printStackTrace();
+        catch(Exception e) {
+            System.out.println(e.getMessage());
         }
     }
     public void loggedIntoInvestor(List<SPV> spvsList, Investor investor){
@@ -257,15 +257,15 @@ public class UI {
                         System.out.println("Please enter a valid input");
                 }
             }catch (Exception e) {
-                e.printStackTrace();
+                System.out.println(e.getMessage());
             }
         }
         while (!action.equals("logout"));
         try {
             loginPage();
         }
-        catch(IOException e) {
-            e.printStackTrace();
+        catch(Exception e) {
+            System.out.println(e.getMessage());
         }
     }
 }
