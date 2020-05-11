@@ -1,6 +1,7 @@
 package ASP;
 
 import IO.BankWriter;
+import IO.InvestorWriter;
 import IO.SPVWriter;
 import util.JsonUtil;
 
@@ -27,14 +28,19 @@ public class UI {
     public void loginPage() throws IOException {
         List<Bank> bankList = new ArrayList<Bank>();
         List<SPV> spvList = new ArrayList<SPV>();
+        List<Investor> investorList = new ArrayList<Investor>();
         List<BankWriter> BankList = JsonUtil.listFromJsonFile("src/main/resources/initialBank.json",BankWriter.class);
         List<SPVWriter> SPVList = JsonUtil.listFromJsonFile("src/main/resources/initialSPV.json",SPVWriter.class); //reads lists back in to re create bank and SPVs
+        List<InvestorWriter> InvestorList = JsonUtil.listFromJsonFile("src/main/resources/initialInvestor.json", InvestorWriter.class);
 
         for (int i = 0; i < BankList.size(); i++) {
             bankList.add(BankList.get(i).CreateBank());
         }
         for (int i = 0; i < SPVList.size(); i++) {
             spvList.add(SPVList.get(i).CreateSPV());
+        }
+        for (int i = 0; i < InvestorList.size(); i++) {
+            investorList.add(InvestorList.get(i).CreateInvestor());
         }
         read.reset();
         System.out.println("Hello, Please log in...");
@@ -49,7 +55,13 @@ public class UI {
                 loggedIntoSPV(spv, bankList);
             }
         }
-//        loggedIntoInvestor();
+        for (int i = 0; i < investorList.size(); i++) {
+            if (id == investorList.get(i).getId()){
+                Investor investor = investorList.get(i);
+                loggedIntoInvestor(spvList,investor);
+
+            }
+        }
     }
     public void loggedIntoSPV(SPV spv, List<Bank> banks) {
         read.useDelimiter("\\n");
@@ -154,6 +166,97 @@ public class UI {
 
                 }
             } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+        while (!action.equals("logout"));
+        try {
+            loginPage();
+        }
+        catch(IOException e) {
+            e.printStackTrace();
+        }
+    }
+    public void loggedIntoInvestor(List<SPV> spvsList, Investor investor){
+        read.useDelimiter("\\n");
+        String action;
+        int id;
+        int spvID;
+        int shares;
+        double min;
+        double max;
+        System.out.println("WELCOME\n");
+        do {
+            System.out.println("Your options are: " +
+                    "\n viewSPVList " +
+                    "\n buyABS " +
+                    "\n listABS " +
+                    "\n viewMyABS " +
+                    "\n viewABSList " +
+                    "\n logout \n");
+            action = read.next();
+            try {
+                switch (action) {
+                    case "viewSPVList":
+                        for (int i = 0; i < spvsList.size(); i++) {
+                            System.out.println("ID:\t" + (i+1) + "\t" + "SPV:\t" + spvsList.get(i));
+                        }
+                        break;
+
+
+                    case "buyABS":
+                        System.out.println("Enter ABS ID:\n");
+                        id = read.nextInt();
+                        System.out.println("Enter SPV ID:\n");
+                        spvID = read.nextInt();
+                        System.out.println("Enter number of shares ou would like to invest:\n");
+                        shares = read.nextInt();
+                        for (int i = 0; i < spvsList.size(); i++) {
+                            if (spvsList.get(spvID-1).getABSList().get(id-1) != null){
+                                SPV spv = spvsList.get(spvID-1);
+                                investor.buyABS(id,spv,shares);
+                            }
+                        }
+                        System.out.println("You have successfully invested " + shares + " shares in ABS: " + spvsList.get(spvID-1).getABSList().get(id-1));
+                        System.out.println(investor.viewMyABS());
+                        break;
+
+
+                    case "listABS":
+                        System.out.println("Enter SPV ID:\n");
+                        spvID = read.nextInt();
+                        System.out.println("Enter Minimum Risk Value:\n");
+                        min = read.nextDouble();
+                        System.out.println("Enter Maximum Risk Value:\n");
+                        max = read.nextDouble();
+                        SPV spv = spvsList.get(spvID-1);
+                        System.out.println(investor.listABS(spv,min,max));
+                        break;
+
+                    case "viewMyABS":
+                        System.out.println(investor.viewMyABS());
+                        break;
+
+                    case "viewABSList":
+                        for (int i = 0; i < spvsList.size(); i++) {
+                            SPV spv1 = spvsList.get(i);
+                            System.out.println("SPV ID:\t");
+                            System.out.println((i+1)+ "\t" + "\t" + spv1);
+                            for (int j = 0; j < spv1.getABSList().size(); j++) {
+                                System.out.println("ABS ID:\t");
+                                System.out.println((j+1)+ "\t" + "\t" + spv1.getABSList());
+                            }
+                            System.out.println("\n");
+                        }
+
+                    case "logout":
+                        System.out.println("Have a nice day!");
+                        break;
+
+                    default:
+                        System.out.println("Please enter a valid input");
+                }
+            }catch (Exception e) {
                 e.printStackTrace();
             }
         }
