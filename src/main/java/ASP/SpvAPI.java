@@ -9,5 +9,7 @@ public interface SpvAPI {
     List<AssetBackedSecurity> getABSList();
     double getBalance();
     List<Loan> getLoans();
+    String getPassword();
+    int getId();
 
 }

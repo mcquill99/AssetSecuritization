@@ -14,15 +14,40 @@ public class UI {
     private SpvAPI spvAPI;
     private InvestorAPI investorAPI;
     private Scanner read = new Scanner(System.in);
-    private Integer id;
+    private String id;
     private String password;
 
     public UI(SpvAPI spvAPI, InvestorAPI investorAPI){
        this.spvAPI = spvAPI;
        this.investorAPI = investorAPI;
     }
-    public UI(SpvAPI spvAPI){
-        this.spvAPI = spvAPI;
+    public boolean confirmCredentials(String acctId, String password) throws IOException {
+        List<SPV> spvList = new ArrayList<SPV>();
+        List<Investor> investorList = new ArrayList<Investor>();
+        List<SPVWriter> SPVList = JsonUtil.listFromJsonFile("src/main/resources/initialSPV.json",SPVWriter.class); //reads lists back in to re create bank and SPVs
+        List<InvestorWriter> InvestorList = JsonUtil.listFromJsonFile("src/main/resources/initialInvestor.json", InvestorWriter.class);
+        for (int i = 0; i < SPVList.size(); i++) {
+            spvList.add(SPVList.get(i).CreateSPV());
+        }
+        for (int i = 0; i < InvestorList.size(); i++) {
+            investorList.add(InvestorList.get(i).CreateInvestor());
+        }
+
+        if (Integer.parseInt(acctId) < 50) {
+            for (int i = 0; i < spvList.size(); i++) {
+                if (spvList.get(i).getId() == Integer.parseInt(acctId) && spvAPI.getPassword() == password) {
+                    return true;
+                }
+            }
+        }
+        else {
+            for (int i = 0; i < investorList.size(); i++) {
+                if (investorList.get(i).getId() == Integer.parseInt(acctId) && investorAPI.getPassword() == password) {
+                    return true;
+                }
+            }
+        }
+        return false;
     }
 
     public void loginPage() throws IOException {
@@ -45,24 +70,47 @@ public class UI {
         read.reset();
         System.out.println("Hello, Please log in...");
         System.out.println("ID: ");
-        id = read.nextInt();
-        //int newID = Integer.parseInt(id);
-        System.out.println("password: ");
-        password = read.next();
-        for (int i = 0; i < spvList.size(); i++) {
-            if (id == spvList.get(i).getId()){
-                SPV spv = spvList.get(i);
-                loggedIntoSPV(spv, bankList);
-            }
-        }
-        for (int i = 0; i < investorList.size(); i++) {
-            if (id == investorList.get(i).getId()){
-                Investor investor = investorList.get(i);
-                loggedIntoInvestor(spvList,investor);
+        id = read.next();
+        if (id != "quit" || id != "q" || id != "Quit" || id != "Q" || id != "QUIT" ) {
+            System.out.println("password: ");
+            password = read.next();
+            try {
+                while (confirmCredentials(id, password) == false) {
+                    System.out.println("Hello, Please log in...");
+                    System.out.println("ID: ");
+                    id = read.next();
+                    if (id != "quit" || id != "q" || id != "Quit" || id != "Q" || id != "QUIT" ) {
+                        System.out.println("password: ");
+                        password = read.next();
+                    }
+                }
 
+                int count = Integer.parseInt(id);
+                if (count < 50){
+                    for (int i = 0; i < spvList.size(); i++) {
+                        if (Integer.parseInt(id) == spvList.get(i).getId()) {
+                            SPV spv = spvList.get(i);
+                            loggedIntoSPV(spv, bankList);
+                        }
+                    }
+                }
+
+                for (int i = 0; i < investorList.size(); i++) {
+                    if (Integer.parseInt(id) == investorList.get(i).getId()) {
+                        Investor investor = investorList.get(i);
+                        loggedIntoInvestor(spvList, investor);
+
+                    }
+                }
+
+            } catch (Exception NumberFormatException) {
+                System.out.println("Please Enter a valid ID or password");
             }
+            loginPage();
         }
+        System.out.println("Good-Bye!!");
     }
+
     public void loggedIntoSPV(SPV spv, List<Bank> banks) {
         read.useDelimiter("\\n");
         String action;
@@ -176,6 +224,7 @@ public class UI {
         catch(Exception e) {
             System.out.println(e.getMessage());
         }
+        System.out.println("Have a nice day... Good-bye!");
     }
     public void loggedIntoInvestor(List<SPV> spvsList, Investor investor){
         read.useDelimiter("\\n");
@@ -267,5 +316,6 @@ public class UI {
         catch(Exception e) {
             System.out.println(e.getMessage());
         }
+        System.out.println("Have a nice day... Good-bye!");
     }
 }
