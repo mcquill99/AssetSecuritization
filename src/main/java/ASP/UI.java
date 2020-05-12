@@ -276,12 +276,13 @@ public class UI {
                         System.out.println("Enter number of shares ou would like to invest:\n");
                         shares = read.nextInt();
                         for (int i = 0; i < spvsList.size(); i++) {
-                            if (spvsList.get(spvID-1).getABSList().get(id-1) != null){
-                                SPV spv = spvsList.get(spvID-1);
+                            if (spvsList.get(i).getId() == spvID){
+                                SPV spv = spvsList.get(i);
                                 investor.buyABS(id,spv,shares);
+                                System.out.println("You have successfully invested " + shares + " shares in ABS: " + spvsList.get(i).getABSList().get(id-1));
+
                             }
                         }
-                        System.out.println("You have successfully invested " + shares + " shares in ABS: " + spvsList.get(spvID-1).getABSList().get(id-1));
                         System.out.println(investor.viewMyABS());
                         break;
 
