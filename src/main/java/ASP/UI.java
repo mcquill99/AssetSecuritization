@@ -16,10 +16,29 @@ public class UI {
     private Scanner read = new Scanner(System.in);
     private String id;
     private String password;
+    private List<Bank> bankList = new ArrayList<>();
+    private List<SPV> spvList = new ArrayList<>();
+    private List<Investor> investorList = new ArrayList<>();
 
     public UI(SpvAPI spvAPI, InvestorAPI investorAPI){
        this.spvAPI = spvAPI;
        this.investorAPI = investorAPI;
+    }
+    public void initializeUI() throws IOException {
+        List<BankWriter> BankList = JsonUtil.listFromJsonFile("src/main/resources/initialBank.json",BankWriter.class);
+        List<SPVWriter> SPVList = JsonUtil.listFromJsonFile("src/main/resources/initialSPV.json",SPVWriter.class); //reads lists back in to re create bank and SPVs
+        List<InvestorWriter> InvestorList = JsonUtil.listFromJsonFile("src/main/resources/initialInvestor.json", InvestorWriter.class);
+
+        for (int i = 0; i < BankList.size(); i++) {
+            bankList.add(BankList.get(i).CreateBank());
+        }
+        for (int i = 0; i < SPVList.size(); i++) {
+            spvList.add(SPVList.get(i).CreateSPV());
+        }
+        for (int i = 0; i < InvestorList.size(); i++) {
+            investorList.add(InvestorList.get(i).CreateInvestor());
+        }
+        loginPage();
     }
     public boolean confirmCredentials(String acctId, String password) throws IOException {
         List<SPV> spvList = new ArrayList<SPV>();
@@ -51,22 +70,6 @@ public class UI {
     }
 
     public void loginPage() throws IOException {
-        List<Bank> bankList = new ArrayList<Bank>();
-        List<SPV> spvList = new ArrayList<SPV>();
-        List<Investor> investorList = new ArrayList<Investor>();
-        List<BankWriter> BankList = JsonUtil.listFromJsonFile("src/main/resources/initialBank.json",BankWriter.class);
-        List<SPVWriter> SPVList = JsonUtil.listFromJsonFile("src/main/resources/initialSPV.json",SPVWriter.class); //reads lists back in to re create bank and SPVs
-        List<InvestorWriter> InvestorList = JsonUtil.listFromJsonFile("src/main/resources/initialInvestor.json", InvestorWriter.class);
-
-        for (int i = 0; i < BankList.size(); i++) {
-            bankList.add(BankList.get(i).CreateBank());
-        }
-        for (int i = 0; i < SPVList.size(); i++) {
-            spvList.add(SPVList.get(i).CreateSPV());
-        }
-        for (int i = 0; i < InvestorList.size(); i++) {
-            investorList.add(InvestorList.get(i).CreateInvestor());
-        }
         read.reset();
         System.out.println("Hello, Please log in...");
         System.out.println("ID: ");
@@ -206,7 +209,7 @@ public class UI {
                         }
                         System.out.println("\n");
 
-                    case "payInvestors":
+                    case "payOut":
                         spv.payInvestors();
                         System.out.println("Your Investors thank you!\n");
                         break;
@@ -249,6 +252,8 @@ public class UI {
                     "\n listABS " +
                     "\n viewMyABS " +
                     "\n viewABSList " +
+                    "\n viewBalance " +
+                    "\n resetPassword " +
                     "\n logout \n");
             action = read.next();
             try {
@@ -294,19 +299,32 @@ public class UI {
                         break;
 
                     case "viewABSList":
+                        SPV spv1;
                         for (int i = 0; i < spvsList.size(); i++) {
-                            SPV spv1 = spvsList.get(i);
+                            spv1 = spvsList.get(i);
                             System.out.println("SPV ID:\t");
-                            System.out.println((i+1)+ "\t" + "\t" + spv1);
+                            System.out.println((spvsList.get(i).getId())+ "\t" + "\t" + spv1);
                             for (int j = 0; j < spv1.getABSList().size(); j++) {
                                 System.out.println("ABS ID:\t");
-                                System.out.println((j+1)+ "\t" + "\t" + spv1.getABSList());
+                                System.out.println((spv1.getABSList().get(j).getId()+ "\t" + "\t" + spv1.getABSList()));
                             }
                             System.out.println("\n");
                         }
 
+                    case "viewBalance":
+                        System.out.println("\n"+"YOU'RE BALANCE IS:\t $" + investor.getBalance()+"\n");
+                        break;
+
+
+                    case "resetPassword":
+                        System.out.println("Whats your new password: ");
+                        String newPass = read.next();
+                        System.out.println("\n"+"Processing..."+"\n");
+                        investor.setPassword(newPass);
+                        System.out.println("You have successfully changed your password!");
+
                     case "logout":
-                        System.out.println("Have a nice day!");
+                        initializeUI();
                         break;
 
                     default:
@@ -326,4 +344,6 @@ public class UI {
         System.out.println("Have a nice day... Good-bye!");
 
     }
+
+
 }
