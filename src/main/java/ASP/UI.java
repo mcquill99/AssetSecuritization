@@ -114,6 +114,7 @@ public class UI {
             loginPage();
         }
         System.out.println("Good-Bye!!");
+        return;
     }
 
     public void loggedIntoSPV(SPV spv, List<Bank> banks) {
@@ -237,7 +238,6 @@ public class UI {
         catch(Exception e) {
             System.out.println(e.getMessage());
         }
-        System.out.println("Have a nice day... Good-bye!");
     }
     public void loggedIntoInvestor(List<SPV> spvsList, Investor investor){
         read.useDelimiter("\\n");
@@ -252,7 +252,6 @@ public class UI {
             System.out.println("Your options are: " +
                     "\n viewSPVList " +
                     "\n buyABS " +
-                    "\n listABS " +
                     "\n viewMyABS " +
                     "\n viewABSList " +
                     "\n viewBalance " +
@@ -286,18 +285,6 @@ public class UI {
                         System.out.println(investor.viewMyABS());
                         break;
 
-
-                    case "listABS":
-                        System.out.println("Enter SPV ID:\n");
-                        spvID = read.nextInt();
-                        System.out.println("Enter Minimum Risk Value:\n");
-                        min = read.nextDouble();
-                        System.out.println("Enter Maximum Risk Value:\n");
-                        max = read.nextDouble();
-                        SPV spv = spvsList.get(spvID-1);
-                        System.out.println(investor.listABS(spv,min,max));
-                        break;
-
                     case "viewMyABS":
                         System.out.println(investor.viewMyABS());
                         break;
@@ -328,7 +315,7 @@ public class UI {
                         System.out.println("You have successfully changed your password!");
 
                     case "logout":
-                        initializeUI();
+                        loginPage();
                         break;
 
                     default:
@@ -345,7 +332,6 @@ public class UI {
         catch(Exception e) {
             System.out.println(e.getMessage());
         }
-        System.out.println("Have a nice day... Good-bye!");
 
     }
 
