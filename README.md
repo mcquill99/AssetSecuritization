@@ -31,7 +31,11 @@ Goal: Finish investor class and have a user interface where the investor can buy
 
 Class Diagram: https://drive.google.com/file/d/1NeR8zkYV1fFxN-1elfnRv5uLTxr-Xswl/view
 
-User Testing to Test for Completion: https://docs.google.com/document/d/12lBUoRwMTkJVlYdgZoZrjTXnMMDnMOM0jDB3RgEPd_I/edit?usp=sharing
+User Testing to Test for Completion: https://docs.google.com/document/d/12lBUoRwMTkJVlYdgZoZrjTXnMMDnMOM0jDB3RgEPd_I/edit?usp=sharing  
+
+Retrospective: https://docs.google.com/document/d/1a2-KTnMpco4X7hElxn8QA6kLfC5MnZEPGZE5VtWjOo0/edit?usp=sharing
+
+
 
 Links
 ------
