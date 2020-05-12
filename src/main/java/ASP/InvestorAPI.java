@@ -10,5 +10,6 @@ public interface InvestorAPI {
     String viewMyABS();
     String getPassword();
     int getId();
+    void setPassword(String password);
 
 }

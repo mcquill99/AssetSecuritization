@@ -1,7 +1,7 @@
 [ {
   "balance" : 500.0,
   "id" : 50,
-  "password" : "LOL",
+  "password" : "software",
   "absinvestedIn" : [ {
     "loans" : [ {
       "interest" : 0.05,
@@ -52,7 +52,7 @@
 }, {
   "balance" : 1000.0,
   "id" : 66,
-  "password" : "HOW",
+  "password" : "Dragon",
   "absinvestedIn" : [ {
     "loans" : [ {
       "interest" : 0.05,

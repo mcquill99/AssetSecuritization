@@ -8,7 +8,7 @@ public class UItest {
         SpvAPI testAPI = new SPV();
         InvestorAPI investorTestAPI = new Investor();
         UI testUI = new UI(testAPI, investorTestAPI);
-        testUI.loginPage();
+        testUI.initializeUI();
 
     }
 }
