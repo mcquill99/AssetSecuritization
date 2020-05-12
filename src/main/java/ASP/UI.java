@@ -32,12 +32,15 @@ public class UI {
         for (int i = 0; i < BankList.size(); i++) {
             bankList.add(BankList.get(i).CreateBank());
         }
-        for (int i = 0; i < SPVList.size(); i++) {
-            spvList.add(SPVList.get(i).CreateSPV());
-        }
         for (int i = 0; i < InvestorList.size(); i++) {
             investorList.add(InvestorList.get(i).CreateInvestor());
         }
+        for (int i = 0; i < SPVList.size(); i++) {
+            SPV spvToAdd = SPVList.get(i).CreateSPV();
+            spvToAdd.setInvestors(investorList);
+            spvList.add(spvToAdd);
+        }
+
         loginPage();
     }
     public boolean confirmCredentials(String acctId, String password) throws IOException {
